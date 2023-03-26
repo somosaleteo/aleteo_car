@@ -47,3 +47,17 @@ double dpFromSize(Size size, double val, [limitedToWidth = false]) {
 double diagonalValue(double width, double height) {
   return sqrt((width * width) + (height * height));
 }
+
+/// This function returns the given [percent] value of a [value] value.
+///
+/// Example usage:
+/// ```dart
+/// double result = dpPercent(500, 20);
+/// // Result will be 100.0
+/// ```
+///
+/// In the above example, the function 'dpPercent' is used to calculate 20% of 500
+/// The resulting value of 100.0 is returned.
+double dpPercent(double value, double percent) {
+  return value * percent / 100;
+}

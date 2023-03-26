@@ -15,11 +15,4 @@ class DoorsWidget extends PositionedVehiclePartWidget {
           top: top,
           vehiclePartWidget: vehiclePartWidget,
         );
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.lightBlueAccent,
-    );
-  }
 }

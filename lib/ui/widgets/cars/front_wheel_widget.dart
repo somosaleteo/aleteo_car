@@ -14,11 +14,4 @@ class FrontWheelWidget extends PositionedVehiclePartWidget {
             left: left,
             top: top,
             vehiclePartWidget: vehiclePartWidget);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-    );
-  }
 }

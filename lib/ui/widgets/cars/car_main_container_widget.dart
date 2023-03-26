@@ -1,8 +1,18 @@
-import 'package:aleteo_car/helpers/responsive_helper.dart';
-import 'package:aleteo_car/ui/widgets/cars/rear_wheel_widget.dart';
-import 'package:aleteo_car/ui/widgets/main_vehicle_container_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_part_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../../helpers/responsive_helper.dart';
+import '../main_vehicle_container_widget.dart';
+import '../vehicle_part_widget.dart';
+import 'car_bonnet_widget.dart';
+import 'cockpick_widget.dart';
+import 'doors_widget.dart';
+import 'front_bumper_widget.dart';
+import 'front_light_widget.dart';
+import 'front_wheel_widget.dart';
+import 'rear_bumper_widget.dart';
+import 'rear_light_widget.dart';
+import 'rear_wheel_widget.dart';
+import 'trunk_widget.dart';
 
 class CarMainContainerWidget extends StatelessWidget {
   const CarMainContainerWidget({
@@ -13,62 +23,152 @@ class CarMainContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double tmp = dpFromSize(size, 100, true);
-    final wheelSize = Size(tmp, tmp);
-    final leftPositionWheel = dpFromSize(size, 30, true);
+    final wheelSize = Size(
+      dpPercent(size.width, 19.11),
+      dpPercent(size.width, 26.91),
+    );
+    final cockpickSize = Size(
+      dpPercent(
+        size.width,
+        60,
+      ),
+      dpPercent(size.height, 45),
+    );
+    final doorsSize = Size(
+      dpPercent(
+        size.width,
+        31.85,
+      ),
+      dpPercent(size.height, 44.84),
+    );
+    final rearBumperSize = Size(
+      dpPercent(
+        size.width,
+        4.78,
+      ),
+      dpPercent(size.height, 6.73),
+    );
+    final frontBumperSize = rearBumperSize;
+    final rearLightSize = rearBumperSize;
+    final frontLightSize = rearBumperSize;
+    final trunkSize = doorsSize;
+    final bonnetSize = doorsSize;
+    final leftPositionWheel = dpPercent(size.width, 8.60);
+    final leftPositionCockpick = dpPercent(size.width, 25);
+    final leftPositionDoors = dpPercent(size.width, 34.08);
+    final topPositionDoors = dpPercent(size.height, 41.70);
+    final leftPositionTrunk = dpPercent(size.width, 2.23);
+    final leftPositionRearBumper = size.width - rearBumperSize.width;
+    final leftPositionRearlight = dpPercent(size.width, 93.63);
+    final leftPositionFrontlight = dpPercent(size.width, 4.78);
+    const leftPositionFrontBumper = 0.0;
+    final leftPositionBonnet = leftPositionDoors + doorsSize.width;
+    final topPositionTrunk = topPositionDoors;
+    final topPositionBonnet = topPositionDoors;
+    final topPositionRearBumper = dpPercent(size.height, 82.96);
+    final topPositionFrontBumper = topPositionRearBumper;
+    final topPositionRearLight = dpPercent(size.height, 40.81);
+    final topPositionFrontLight = dpPercent(size.height, 43.95);
+    final leftPositionRearWheel = dpPercent(size.width, 72.29);
     final topPositionWheel = size.height - wheelSize.width;
+    final topPositionCockpick = dpPercent(size.height, 1.0);
+
     return MainVehicleContainerWidget(
       size: size,
+      color: Colors.yellow,
       listOfVehicleParts: [
-        /*
         CarBonnetWidget(
-          left: 0.0,
-          top: 0.0,
+          left: leftPositionBonnet,
+          top: topPositionBonnet,
           vehiclePartWidget: VehiclePartWidget(
-            size: Size.zero,
-            child: SizedBox.shrink(),
+            color: Colors.blue,
+            size: bonnetSize,
+            child: const SizedBox.shrink(),
           ),
         ),
         TrunkWidget(
-          left: 0.0,
-          top: 0.0,
+          left: leftPositionTrunk,
+          top: topPositionTrunk,
           vehiclePartWidget: VehiclePartWidget(
-            size: Size.zero,
-            child: SizedBox.shrink(),
+            color: Colors.blue,
+            size: trunkSize,
+            child: const SizedBox.shrink(),
           ),
         ),
         DoorsWidget(
-          left: 0.0,
-          top: 0.0,
+          left: leftPositionDoors,
+          top: topPositionDoors,
           vehiclePartWidget: VehiclePartWidget(
-            size: Size.zero,
-            child: SizedBox.shrink(),
+            color: Colors.lightBlueAccent,
+            size: doorsSize,
+            child: const SizedBox.shrink(),
           ),
         ),
         CockpickWidget(
-          left: 0.0,
-          top: 0.0,
+          left: leftPositionCockpick,
+          top: topPositionCockpick,
           vehiclePartWidget: VehiclePartWidget(
-            size: Size.zero,
-            child: SizedBox.shrink(),
+            color: Colors.red,
+            size: cockpickSize,
+            child: const SizedBox.shrink(),
           ),
         ),
         FrontWheelWidget(
-          left: 0.0,
-          top: 0.0,
+          left: leftPositionRearWheel,
+          top: topPositionWheel,
           vehiclePartWidget: VehiclePartWidget(
-            size: Size.zero,
-            child: SizedBox.shrink(),
+            color: Colors.black,
+            size: wheelSize,
+            child: const SizedBox.shrink(),
           ),
-        ),*/
+        ),
         RearWheelWidget(
           left: leftPositionWheel,
           top: topPositionWheel,
           vehiclePartWidget: VehiclePartWidget(
+            color: Colors.black,
             size: wheelSize,
-            child: Text(
-              wheelSize.toString(),
+            child: Center(
+              child: Text(
+                wheelSize.toString(),
+              ),
             ),
+          ),
+        ),
+        RearBumperWidget(
+          left: leftPositionRearBumper,
+          top: topPositionRearBumper,
+          vehiclePartWidget: VehiclePartWidget(
+            color: Colors.grey,
+            size: rearBumperSize,
+            child: const SizedBox.shrink(),
+          ),
+        ),
+        FrontBumperWidget(
+          left: leftPositionFrontBumper,
+          top: topPositionFrontBumper,
+          vehiclePartWidget: VehiclePartWidget(
+            color: Colors.grey,
+            size: frontBumperSize,
+            child: const SizedBox.shrink(),
+          ),
+        ),
+        RearLightWidget(
+          left: leftPositionRearlight,
+          top: topPositionRearLight,
+          vehiclePartWidget: VehiclePartWidget(
+            color: Colors.red,
+            size: rearLightSize,
+            child: const SizedBox.shrink(),
+          ),
+        ),
+        FrontLightWidget(
+          left: leftPositionFrontlight,
+          top: topPositionFrontLight,
+          vehiclePartWidget: VehiclePartWidget(
+            color: Colors.yellow,
+            size: frontLightSize,
+            child: const SizedBox.shrink(),
           ),
         ),
       ],

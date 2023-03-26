@@ -63,4 +63,29 @@ main() {
     expect(text.style!.fontSize,
         Responsive.of(tester.element(textFinder), 0.75).wp(5));
   });
+  group('dpPercent function', () {
+    test('when percent is 0', () {
+      expect(dpPercent(500, 0), equals(0));
+    });
+
+    test('when percent is 20', () {
+      expect(dpPercent(500, 20), equals(100.0));
+    });
+
+    test('when percent is 100', () {
+      expect(dpPercent(500, 100), equals(500.0));
+    });
+
+    test('when percent is 200', () {
+      expect(dpPercent(500, 200), equals(1000.0));
+    });
+
+    test('when value is 0', () {
+      expect(dpPercent(0, 50), equals(0));
+    });
+
+    test('when value is negative', () {
+      expect(dpPercent(-500, 20), equals(-100.0));
+    });
+  });
 }

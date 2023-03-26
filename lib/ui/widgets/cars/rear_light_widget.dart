@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../positioned_vehicle_part_widget.dart';
 import '../vehicle_part_widget.dart';
 
-class BackLightWidget extends PositionedVehiclePartWidget {
-  const BackLightWidget(
+class RearLightWidget extends PositionedVehiclePartWidget {
+  const RearLightWidget(
       {Key? key,
       required double left,
       required double top,
@@ -15,11 +15,4 @@ class BackLightWidget extends PositionedVehiclePartWidget {
           top: top,
           vehiclePartWidget: vehiclePartWidget,
         );
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
-    );
-  }
 }
