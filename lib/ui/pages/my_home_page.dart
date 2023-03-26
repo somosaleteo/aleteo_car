@@ -14,7 +14,10 @@ class MyHomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CarMainContainerWidget(size: size),
+            CarMainContainerWidget(
+              size: size,
+              showLayoutColors: true,
+            ),
             const SizedBox(
               height: 10.0,
             ),

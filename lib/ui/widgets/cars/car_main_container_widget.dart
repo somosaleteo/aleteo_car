@@ -18,8 +18,10 @@ class CarMainContainerWidget extends StatelessWidget {
   const CarMainContainerWidget({
     Key? key,
     required this.size,
+    this.showLayoutColors = false,
   }) : super(key: key);
   final Size size;
+  final bool showLayoutColors;
 
   @override
   Widget build(BuildContext context) {
@@ -75,13 +77,13 @@ class CarMainContainerWidget extends StatelessWidget {
 
     return MainVehicleContainerWidget(
       size: size,
-      color: Colors.yellow,
+      color: showLayoutColors ? Colors.yellow : Colors.transparent,
       listOfVehicleParts: [
         CarBonnetWidget(
           left: leftPositionBonnet,
           top: topPositionBonnet,
           vehiclePartWidget: VehiclePartWidget(
-            color: Colors.blue,
+            color: showLayoutColors ? Colors.blue : Colors.transparent,
             size: bonnetSize,
             child: const SizedBox.shrink(),
           ),
@@ -90,7 +92,7 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionTrunk,
           top: topPositionTrunk,
           vehiclePartWidget: VehiclePartWidget(
-            color: Colors.blue,
+            color: showLayoutColors ? Colors.blue : Colors.transparent,
             size: trunkSize,
             child: const SizedBox.shrink(),
           ),
@@ -99,7 +101,8 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionDoors,
           top: topPositionDoors,
           vehiclePartWidget: VehiclePartWidget(
-            color: Colors.lightBlueAccent,
+            color:
+                showLayoutColors ? Colors.lightBlueAccent : Colors.transparent,
             size: doorsSize,
             child: const SizedBox.shrink(),
           ),
@@ -108,7 +111,7 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionCockpick,
           top: topPositionCockpick,
           vehiclePartWidget: VehiclePartWidget(
-            color: Colors.red,
+            color: showLayoutColors ? Colors.red : Colors.transparent,
             size: cockpickSize,
             child: const SizedBox.shrink(),
           ),
@@ -117,7 +120,7 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionRearWheel,
           top: topPositionWheel,
           vehiclePartWidget: VehiclePartWidget(
-            color: Colors.black,
+            color: showLayoutColors ? Colors.black12 : Colors.transparent,
             size: wheelSize,
             child: const SizedBox.shrink(),
           ),
@@ -126,7 +129,7 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionWheel,
           top: topPositionWheel,
           vehiclePartWidget: VehiclePartWidget(
-            color: Colors.black,
+            color: showLayoutColors ? Colors.black12 : Colors.transparent,
             size: wheelSize,
             child: Center(
               child: Text(
@@ -139,7 +142,7 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionRearBumper,
           top: topPositionRearBumper,
           vehiclePartWidget: VehiclePartWidget(
-            color: Colors.grey,
+            color: showLayoutColors ? Colors.grey : Colors.transparent,
             size: rearBumperSize,
             child: const SizedBox.shrink(),
           ),
@@ -148,7 +151,7 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionFrontBumper,
           top: topPositionFrontBumper,
           vehiclePartWidget: VehiclePartWidget(
-            color: Colors.grey,
+            color: showLayoutColors ? Colors.grey : Colors.transparent,
             size: frontBumperSize,
             child: const SizedBox.shrink(),
           ),
@@ -157,7 +160,7 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionRearlight,
           top: topPositionRearLight,
           vehiclePartWidget: VehiclePartWidget(
-            color: Colors.red,
+            color: showLayoutColors ? Colors.red : Colors.transparent,
             size: rearLightSize,
             child: const SizedBox.shrink(),
           ),
@@ -166,7 +169,7 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionFrontlight,
           top: topPositionFrontLight,
           vehiclePartWidget: VehiclePartWidget(
-            color: Colors.yellow,
+            color: showLayoutColors ? Colors.yellow : Colors.transparent,
             size: frontLightSize,
             child: const SizedBox.shrink(),
           ),
