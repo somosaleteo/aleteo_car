@@ -3,6 +3,15 @@ import 'package:flutter/material.dart';
 import '../../../helpers/responsive_helper.dart';
 import '../main_vehicle_container_widget.dart';
 import '../vehicle_part_widget.dart';
+import '../vehicle_parts/car_bonnets/car_bonnet_a_widget.dart';
+import '../vehicle_parts/car_cockpicks/car_cockpick_a_widget.dart';
+import '../vehicle_parts/car_doors/car_door_a_widget.dart';
+import '../vehicle_parts/car_front_bumpers/car_front_bumber_a_widget.dart';
+import '../vehicle_parts/car_front_lights/car_front_light_a_widget.dart';
+import '../vehicle_parts/car_rear_bumpers/car_rear_bumper_a_widget.dart';
+import '../vehicle_parts/car_rear_lights/car_rear_light_a_widget.dart';
+import '../vehicle_parts/car_trunks/car_trunk_a.dart';
+import '../vehicle_parts/car_wheels/car_wheel_a_widget.dart';
 import 'car_bonnet_widget.dart';
 import 'cockpick_widget.dart';
 import 'doors_widget.dart';
@@ -25,9 +34,10 @@ class CarMainContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final wheelSizeTmp = dpPercent(size.width, 19.11);
     final wheelSize = Size(
-      dpPercent(size.width, 19.11),
-      dpPercent(size.width, 26.91),
+      wheelSizeTmp,
+      wheelSizeTmp,
     );
     final cockpickSize = Size(
       dpPercent(
@@ -39,7 +49,7 @@ class CarMainContainerWidget extends StatelessWidget {
     final doorsSize = Size(
       dpPercent(
         size.width,
-        31.85,
+        32,
       ),
       dpPercent(size.height, 44.84),
     );
@@ -57,14 +67,14 @@ class CarMainContainerWidget extends StatelessWidget {
     final bonnetSize = doorsSize;
     final leftPositionWheel = dpPercent(size.width, 8.60);
     final leftPositionCockpick = dpPercent(size.width, 25);
-    final leftPositionDoors = dpPercent(size.width, 34.08);
+    final leftPositionDoors = dpPercent(size.width, 34);
     final topPositionDoors = dpPercent(size.height, 41.70);
-    final leftPositionTrunk = dpPercent(size.width, 2.23);
+    final leftPositionTrunk = leftPositionDoors + doorsSize.width;
     final leftPositionRearBumper = size.width - rearBumperSize.width;
     final leftPositionRearlight = dpPercent(size.width, 93.63);
     final leftPositionFrontlight = dpPercent(size.width, 4.78);
     const leftPositionFrontBumper = 0.0;
-    final leftPositionBonnet = leftPositionDoors + doorsSize.width;
+    final leftPositionBonnet = dpPercent(size.width, 2.23);
     final topPositionTrunk = topPositionDoors;
     final topPositionBonnet = topPositionDoors;
     final topPositionRearBumper = dpPercent(size.height, 82.96);
@@ -74,6 +84,12 @@ class CarMainContainerWidget extends StatelessWidget {
     final leftPositionRearWheel = dpPercent(size.width, 72.29);
     final topPositionWheel = size.height - wheelSize.width;
     final topPositionCockpick = dpPercent(size.height, 1.0);
+
+    const color1 = Color.fromRGBO(3, 221, 208, 1.0),
+        color2 = Color.fromRGBO(201, 244, 242, 1.0),
+        colorFrontLight = Color.fromRGBO(182, 223, 253, 1.0),
+        colorRearLight = Color.fromRGBO(250, 27, 12, 1.0),
+        colorBumper = Color.fromRGBO(174, 175, 180, 1.0);
 
     return MainVehicleContainerWidget(
       size: size,
@@ -85,7 +101,9 @@ class CarMainContainerWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.blue : Colors.transparent,
             size: bonnetSize,
-            child: const SizedBox.shrink(),
+            child: const CarBonnetAWidget(
+              color: color1,
+            ),
           ),
         ),
         TrunkWidget(
@@ -94,7 +112,7 @@ class CarMainContainerWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.blue : Colors.transparent,
             size: trunkSize,
-            child: const SizedBox.shrink(),
+            child: const CarTrunkAWidget(color: color1),
           ),
         ),
         DoorsWidget(
@@ -104,7 +122,7 @@ class CarMainContainerWidget extends StatelessWidget {
             color:
                 showLayoutColors ? Colors.lightBlueAccent : Colors.transparent,
             size: doorsSize,
-            child: const SizedBox.shrink(),
+            child: const CarDoorsAWidget(),
           ),
         ),
         CockpickWidget(
@@ -113,7 +131,7 @@ class CarMainContainerWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.red : Colors.transparent,
             size: cockpickSize,
-            child: const SizedBox.shrink(),
+            child: const CarCockpickAWidget(color: color2),
           ),
         ),
         FrontWheelWidget(
@@ -122,7 +140,7 @@ class CarMainContainerWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.black12 : Colors.transparent,
             size: wheelSize,
-            child: const SizedBox.shrink(),
+            child: const CarFrontWheelAWidget(),
           ),
         ),
         RearWheelWidget(
@@ -131,11 +149,7 @@ class CarMainContainerWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.black12 : Colors.transparent,
             size: wheelSize,
-            child: Center(
-              child: Text(
-                wheelSize.toString(),
-              ),
-            ),
+            child: const CarFrontWheelAWidget(),
           ),
         ),
         RearBumperWidget(
@@ -144,7 +158,9 @@ class CarMainContainerWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.grey : Colors.transparent,
             size: rearBumperSize,
-            child: const SizedBox.shrink(),
+            child: const CarRearBumperAWidget(
+              color: colorBumper,
+            ),
           ),
         ),
         FrontBumperWidget(
@@ -153,7 +169,7 @@ class CarMainContainerWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.grey : Colors.transparent,
             size: frontBumperSize,
-            child: const SizedBox.shrink(),
+            child: const CarFrontBumperAWidget(color: colorBumper),
           ),
         ),
         RearLightWidget(
@@ -162,7 +178,9 @@ class CarMainContainerWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.red : Colors.transparent,
             size: rearLightSize,
-            child: const SizedBox.shrink(),
+            child: const CarRearLightAWidget(
+              color: colorRearLight,
+            ),
           ),
         ),
         FrontLightWidget(
@@ -171,7 +189,9 @@ class CarMainContainerWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.yellow : Colors.transparent,
             size: frontLightSize,
-            child: const SizedBox.shrink(),
+            child: const CarFrontLightAWidget(
+              color: colorFrontLight,
+            ),
           ),
         ),
       ],

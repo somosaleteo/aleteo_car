@@ -4,12 +4,12 @@ import '../positioned_vehicle_part_widget.dart';
 import '../vehicle_part_widget.dart';
 
 class CarBonnetWidget extends PositionedVehiclePartWidget {
-  const CarBonnetWidget(
-      {Key? key,
-      required double left,
-      required double top,
-      required VehiclePartWidget vehiclePartWidget})
-      : super(
+  const CarBonnetWidget({
+    Key? key,
+    required double left,
+    required double top,
+    required VehiclePartWidget vehiclePartWidget,
+  }) : super(
           key: key,
           left: left,
           top: top,
