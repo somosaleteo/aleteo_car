@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
 
-import '../../../helpers/responsive_helper.dart';
-import '../main_vehicle_container_widget.dart';
-import '../vehicle_part_widget.dart';
-import '../vehicle_parts/car_bonnets/car_bonnet_a_widget.dart';
-import '../vehicle_parts/car_cockpicks/car_cockpick_a_widget.dart';
-import '../vehicle_parts/car_doors/car_door_a_widget.dart';
-import '../vehicle_parts/car_front_bumpers/car_front_bumber_a_widget.dart';
-import '../vehicle_parts/car_front_lights/car_front_light_a_widget.dart';
-import '../vehicle_parts/car_rear_bumpers/car_rear_bumper_a_widget.dart';
-import '../vehicle_parts/car_rear_lights/car_rear_light_a_widget.dart';
-import '../vehicle_parts/car_trunks/car_trunk_a.dart';
-import '../vehicle_parts/car_wheels/car_wheel_a_widget.dart';
-import 'car_bonnet_widget.dart';
-import 'cockpick_widget.dart';
-import 'doors_widget.dart';
-import 'front_bumper_widget.dart';
-import 'front_light_widget.dart';
-import 'front_wheel_widget.dart';
-import 'rear_bumper_widget.dart';
-import 'rear_light_widget.dart';
-import 'rear_wheel_widget.dart';
-import 'trunk_widget.dart';
+import '../../../../helpers/responsive_helper.dart';
+import '../../main_vehicle_container_widget.dart';
+import '../../vehicle_part_widget.dart';
+import '../../vehicle_parts/car_bonnets/car_bonnet_a_widget.dart';
+import '../../vehicle_parts/car_cockpicks/car_cockpick_a_widget.dart';
+import '../../vehicle_parts/car_doors/car_door_a_widget.dart';
+import '../../vehicle_parts/car_front_bumpers/car_front_bumber_a_widget.dart';
+import '../../vehicle_parts/car_front_lights/car_front_light_a_widget.dart';
+import '../../vehicle_parts/car_rear_bumpers/car_rear_bumper_a_widget.dart';
+import '../../vehicle_parts/car_rear_lights/car_rear_light_a_widget.dart';
+import '../../vehicle_parts/car_trunks/car_trunk_a.dart';
+import '../../vehicle_parts/car_wheels/car_wheel_a_widget.dart';
+import '../car_bonnet_widget.dart';
+import '../cockpick_widget.dart';
+import '../doors_widget.dart';
+import '../front_bumper_widget.dart';
+import '../front_light_widget.dart';
+import '../front_wheel_widget.dart';
+import '../rear_bumper_widget.dart';
+import '../rear_light_widget.dart';
+import '../rear_wheel_widget.dart';
+import '../trunk_widget.dart';
 
-class CarMainContainerWidget extends StatelessWidget {
-  const CarMainContainerWidget({
+class CarCustomFiatWidget extends StatelessWidget {
+  const CarCustomFiatWidget({
     Key? key,
     required this.size,
     this.showLayoutColors = false,
@@ -85,11 +85,11 @@ class CarMainContainerWidget extends StatelessWidget {
     final topPositionWheel = size.height - wheelSize.width;
     final topPositionCockpick = dpPercent(size.height, 1.0);
 
-    const color1 = Color.fromRGBO(3, 221, 208, 1.0),
+    const color1 = Color.fromRGBO(23, 121, 108, 1.0),
         color2 = Color.fromRGBO(201, 244, 242, 1.0),
-        colorFrontLight = Color.fromRGBO(182, 223, 253, 1.0),
-        colorRearLight = Color.fromRGBO(250, 27, 12, 1.0),
-        colorBumper = Color.fromRGBO(174, 175, 180, 1.0);
+        colorFrontLight = Color.fromRGBO(182, 223, 0, 1.0),
+        colorRearLight = Color.fromRGBO(220, 50, 50, 1.0),
+        colorBumper = Color.fromRGBO(74, 175, 180, 1.0);
 
     return MainVehicleContainerWidget(
       size: size,
