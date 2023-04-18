@@ -27,6 +27,14 @@ class MyHomePage extends StatelessWidget {
             ),
             CarCustomFiatWidget(
               size: size2,
+              showLayoutColors: true,
+            ),
+            const SizedBox(
+              width: double.infinity,
+              height: 10.0,
+            ),
+            CarCustomFiatWidget(
+              size: size2,
               showLayoutColors: false,
             ),
           ],

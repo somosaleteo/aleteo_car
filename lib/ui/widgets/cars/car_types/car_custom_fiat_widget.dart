@@ -101,8 +101,11 @@ class CarCustomFiatWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.blue : Colors.transparent,
             size: bonnetSize,
-            child: const CarBonnetAWidget(
-              color: color1,
+            child: Opacity(
+              opacity: showLayoutColors ? .15 : 1.0,
+              child: const CarBonnetAWidget(
+                color: color1,
+              ),
             ),
           ),
         ),
@@ -112,7 +115,9 @@ class CarCustomFiatWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.blue : Colors.transparent,
             size: trunkSize,
-            child: const CarTrunkAWidget(color: color1),
+            child: Opacity(
+                opacity: showLayoutColors ? .15 : 1.0,
+                child: const CarTrunkAWidget(color: color1)),
           ),
         ),
         DoorsWidget(
@@ -122,7 +127,9 @@ class CarCustomFiatWidget extends StatelessWidget {
             color:
                 showLayoutColors ? Colors.lightBlueAccent : Colors.transparent,
             size: doorsSize,
-            child: const CarDoorsAWidget(),
+            child: Opacity(
+                opacity: showLayoutColors ? .15 : 1.0,
+                child: const CarDoorsAWidget()),
           ),
         ),
         CockpickWidget(
@@ -131,7 +138,9 @@ class CarCustomFiatWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.red : Colors.transparent,
             size: cockpickSize,
-            child: const CarCockpickAWidget(color: color2),
+            child: Opacity(
+                opacity: showLayoutColors ? .15 : 1.0,
+                child: const CarCockpickAWidget(color: color2)),
           ),
         ),
         FrontWheelWidget(
@@ -140,7 +149,9 @@ class CarCustomFiatWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.black12 : Colors.transparent,
             size: wheelSize,
-            child: const CarFrontWheelAWidget(),
+            child: Opacity(
+                opacity: showLayoutColors ? .15 : 1.0,
+                child: const CarFrontWheelAWidget()),
           ),
         ),
         RearWheelWidget(
@@ -149,7 +160,9 @@ class CarCustomFiatWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.black12 : Colors.transparent,
             size: wheelSize,
-            child: const CarFrontWheelAWidget(),
+            child: Opacity(
+                opacity: showLayoutColors ? .15 : 1.0,
+                child: const CarFrontWheelAWidget()),
           ),
         ),
         RearBumperWidget(
@@ -158,8 +171,11 @@ class CarCustomFiatWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.grey : Colors.transparent,
             size: rearBumperSize,
-            child: const CarRearBumperAWidget(
-              color: colorBumper,
+            child: Opacity(
+              opacity: showLayoutColors ? .15 : 1.0,
+              child: const CarRearBumperAWidget(
+                color: colorBumper,
+              ),
             ),
           ),
         ),
@@ -169,7 +185,9 @@ class CarCustomFiatWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.grey : Colors.transparent,
             size: frontBumperSize,
-            child: const CarFrontBumperAWidget(color: colorBumper),
+            child: Opacity(
+                opacity: showLayoutColors ? .15 : 1.0,
+                child: const CarFrontBumperAWidget(color: colorBumper)),
           ),
         ),
         RearLightWidget(
@@ -178,8 +196,11 @@ class CarCustomFiatWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.red : Colors.transparent,
             size: rearLightSize,
-            child: const CarRearLightAWidget(
-              color: colorRearLight,
+            child: Opacity(
+              opacity: showLayoutColors ? .15 : 1.0,
+              child: const CarRearLightAWidget(
+                color: colorRearLight,
+              ),
             ),
           ),
         ),
@@ -189,8 +210,11 @@ class CarCustomFiatWidget extends StatelessWidget {
           vehiclePartWidget: VehiclePartWidget(
             color: showLayoutColors ? Colors.yellow : Colors.transparent,
             size: frontLightSize,
-            child: const CarFrontLightAWidget(
-              color: colorFrontLight,
+            child: Opacity(
+              opacity: showLayoutColors ? .15 : 1.0,
+              child: const CarFrontLightAWidget(
+                color: colorFrontLight,
+              ),
             ),
           ),
         ),
