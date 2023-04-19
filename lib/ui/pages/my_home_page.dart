@@ -3,13 +3,15 @@ import 'package:flutter/material.dart';
 import '../../helpers/responsive_helper.dart';
 import '../widgets/cars/car_main_container_widget.dart';
 import '../widgets/cars/car_types/car_custom_fiat_widget.dart';
+import '../widgets/cars/car_types/car_custom_painter_fiat_widget.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final tmp = dpFromSize(MediaQuery.of(context).size, 150, true);
+    final tmp = dpFromSize(
+        MediaQuery.of(context).size, 580, true); //TODO: reestablecer a 180
     final Size size2 = Size(tmp * 1.25, tmp);
 
     return Scaffold(
@@ -33,7 +35,7 @@ class MyHomePage extends StatelessWidget {
               width: double.infinity,
               height: 10.0,
             ),
-            CarCustomFiatWidget(
+            CarCustomPainterFiatWidget(
               size: size2,
               showLayoutColors: false,
             ),
