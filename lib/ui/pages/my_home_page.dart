@@ -1,3 +1,4 @@
+import 'package:aleteo_car/ui/pages/bloc_model_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../helpers/responsive_helper.dart';
@@ -10,8 +11,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tmp = dpFromSize(
-        MediaQuery.of(context).size, 580, true); //TODO: reestablecer a 180
+    final tmp = dpFromSize(MediaQuery.of(context).size, 150, true);
     final Size size2 = Size(tmp * 1.25, tmp);
 
     return Scaffold(
@@ -41,6 +41,13 @@ class MyHomePage extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (BuildContext context) => const BlocModelPage()));
+        },
+        child: const Icon(Icons.dataset_sharp),
       ),
     );
   }

@@ -1,17 +1,17 @@
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_cockpicks/car_cockpick_custom_painter_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_doors/car_door_custom_painter_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_front_bumpers/car_front_bumber_custom_painter_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_front_lights/car_front_light_custom_painter_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_rear_bumpers/car_rear_bumper_a_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_rear_lights/car_rear_light_a_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_trunks/car_trunk_a.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_wheels/car_wheel_a_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../helpers/responsive_helper.dart';
 import '../../main_vehicle_container_widget.dart';
 import '../../vehicle_part_widget.dart';
 import '../../vehicle_parts/car_bonnets/car_bonnet_custom_painter_widget.dart';
+import '../../vehicle_parts/car_cockpicks/car_cockpick_custom_painter_widget.dart';
+import '../../vehicle_parts/car_doors/car_door_custom_painter_widget.dart';
+import '../../vehicle_parts/car_front_bumpers/car_front_bumber_custom_painter_widget.dart';
+import '../../vehicle_parts/car_front_lights/car_front_light_custom_painter_widget.dart';
+import '../../vehicle_parts/car_rear_bumpers/car_rear_bumper_custom_painter_widget.dart';
+import '../../vehicle_parts/car_rear_lights/car_rear_light_custom_painter_widget.dart';
+import '../../vehicle_parts/car_trunks/car_trunk_custom_painter_widget.dart';
+import '../../vehicle_parts/car_wheels/car_wheel_custom_painter_widget.dart';
 import '../car_bonnet_widget.dart';
 import '../cockpick_widget.dart';
 import '../doors_widget.dart';
@@ -117,7 +117,7 @@ class CarCustomPainterFiatWidget extends StatelessWidget {
             size: trunkSize,
             child: Opacity(
                 opacity: showLayoutColors ? .15 : 1.0,
-                child: const CarTrunkAWidget(color: color1)),
+                child: const CarTrunkCustomPainterWidget(color: color1)),
           ),
         ),
         DoorsWidget(
@@ -151,7 +151,7 @@ class CarCustomPainterFiatWidget extends StatelessWidget {
             size: wheelSize,
             child: Opacity(
                 opacity: showLayoutColors ? .15 : 1.0,
-                child: const CarFrontWheelAWidget()),
+                child: const CarWheelCustomPainter()),
           ),
         ),
         RearWheelWidget(
@@ -162,7 +162,7 @@ class CarCustomPainterFiatWidget extends StatelessWidget {
             size: wheelSize,
             child: Opacity(
                 opacity: showLayoutColors ? .15 : 1.0,
-                child: const CarFrontWheelAWidget()),
+                child: const CarWheelCustomPainter()),
           ),
         ),
         RearBumperWidget(
@@ -173,7 +173,7 @@ class CarCustomPainterFiatWidget extends StatelessWidget {
             size: rearBumperSize,
             child: Opacity(
               opacity: showLayoutColors ? .15 : 1.0,
-              child: const CarRearBumperAWidget(
+              child: const CarRearBumperCustomPainterWidget(
                 color: colorBumper,
               ),
             ),
@@ -199,7 +199,7 @@ class CarCustomPainterFiatWidget extends StatelessWidget {
             size: rearLightSize,
             child: Opacity(
               opacity: showLayoutColors ? .15 : 1.0,
-              child: const CarRearLightAWidget(
+              child: const CarRearLightCustomPainterWidget(
                 color: colorRearLight,
               ),
             ),
