@@ -99,7 +99,8 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionBonnet,
           top: topPositionBonnet,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.blue : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.blue,
             size: bonnetSize,
             child: const CarBonnetAWidget(
               color: color1,
