@@ -114,13 +114,9 @@ class CarCustomPainterFiatWidget extends StatelessWidget {
             showLayout: showLayoutColors,
             color: Colors.blue,
             size: trunkSize,
-<<<<<<< HEAD
             child: Opacity(
                 opacity: showLayoutColors ? .15 : 1.0,
                 child: const CarTrunkCustomPainterWidget(color: color1)),
-=======
-            child: const CarTrunkAWidget(color: color1),
->>>>>>> cd401e63924708636139c2ede102b605b3fba63a
           ),
         ),
         DoorsWidget(
@@ -164,13 +160,9 @@ class CarCustomPainterFiatWidget extends StatelessWidget {
             showLayout: showLayoutColors,
             color: Colors.black12,
             size: wheelSize,
-<<<<<<< HEAD
             child: Opacity(
                 opacity: showLayoutColors ? .15 : 1.0,
                 child: const CarWheelCustomPainter()),
-=======
-            child: const CarFrontWheelAWidget(),
->>>>>>> cd401e63924708636139c2ede102b605b3fba63a
           ),
         ),
         RearBumperWidget(
@@ -180,16 +172,11 @@ class CarCustomPainterFiatWidget extends StatelessWidget {
             showLayout: showLayoutColors,
             color: Colors.grey,
             size: rearBumperSize,
-<<<<<<< HEAD
             child: Opacity(
               opacity: showLayoutColors ? .15 : 1.0,
               child: const CarRearBumperCustomPainterWidget(
                 color: colorBumper,
               ),
-=======
-            child: const CarRearBumperAWidget(
-              color: colorBumper,
->>>>>>> cd401e63924708636139c2ede102b605b3fba63a
             ),
           ),
         ),
@@ -210,16 +197,11 @@ class CarCustomPainterFiatWidget extends StatelessWidget {
             showLayout: showLayoutColors,
             color: Colors.red,
             size: rearLightSize,
-<<<<<<< HEAD
             child: Opacity(
               opacity: showLayoutColors ? .15 : 1.0,
               child: const CarRearLightCustomPainterWidget(
                 color: colorRearLight,
               ),
-=======
-            child: const CarRearLightAWidget(
-              color: colorRearLight,
->>>>>>> cd401e63924708636139c2ede102b605b3fba63a
             ),
           ),
         ),
