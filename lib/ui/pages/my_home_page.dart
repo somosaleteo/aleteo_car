@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 
 import '../../helpers/responsive_helper.dart';
 import '../widgets/cars/car_main_container_widget.dart';
+import '../widgets/cars/car_types/car_custom_fiat_widget.dart';
+import '../widgets/cars/car_types/car_custom_painter_fiat_widget.dart';
 import '../widgets/my_custom_scaffold_widget.dart';
+import 'box_model_page.dart';
 import 'my_car_container_layout_page.dart';
 import 'my_car_container_page.dart';
 import 'my_car_custom_painter_page.dart';
@@ -97,6 +100,8 @@ class MyNavigatorButton extends StatelessWidget {
               builder: (context) => page,
             ));
       },
+  
+      
       child: Container(
         height: size.height,
         decoration: BoxDecoration(
