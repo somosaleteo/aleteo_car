@@ -1,9 +1,10 @@
-import 'package:aleteo_car/ui/widgets/cars/car_types/car_custom_fiat_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../helpers/responsive_helper.dart';
 import '../widgets/cars/car_main_container_widget.dart';
+import '../widgets/cars/car_types/car_custom_painter_fiat_widget.dart';
 import '../widgets/my_custom_scaffold_widget.dart';
+import 'box_model_page.dart';
 import 'my_car_container_layout_page.dart';
 import 'my_car_container_page.dart';
 import 'my_car_custom_painter_page.dart';
@@ -25,6 +26,12 @@ class MyHomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text("Presentacion custom painter"),
+                MyNavigatorButton(
+                    page: const BoxModelPage(),
+                    size: size,
+                    label: "Box Model",
+                    child: const Icon(Icons.dataset_outlined)),
+                const _SeparatorWidget(),
                 MyNavigatorButton(
                   page: const MyCarContainerPage(),
                   size: size,
@@ -49,7 +56,7 @@ class MyHomePage extends StatelessWidget {
                   page: const MyCarCustomPainterPage(),
                   size: size,
                   label: "Usando Custom Painter",
-                  child: CarCustomFiatWidget(
+                  child: CarCustomPainterFiatWidget(
                     size: size2,
                     showLayoutColors: false,
                   ),

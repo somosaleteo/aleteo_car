@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BlocModelPage extends StatelessWidget {
-  const BlocModelPage({super.key});
+class BoxModelPage extends StatelessWidget {
+  const BoxModelPage({super.key});
 
   @override
   Widget build(BuildContext context) {
