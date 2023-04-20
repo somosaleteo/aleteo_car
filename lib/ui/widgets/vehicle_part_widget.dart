@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 
 class VehiclePartWidget extends StatelessWidget {
-  const VehiclePartWidget({
-    Key? key,
-    required this.size,
-    required this.child,
-    this.color = Colors.transparent,
-  }) : super(key: key);
+  const VehiclePartWidget(
+      {Key? key,
+      required this.size,
+      required this.child,
+      this.color = Colors.transparent,
+      this.showLayout = false})
+      : super(key: key);
 
   final Size size;
   final Widget child;
   final Color color;
+  final bool showLayout;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: color,
+      color: showLayout ? color : Colors.transparent,
       width: size.width,
       height: size.height,
-      child: child,
+      child: Opacity(opacity: showLayout ? .1 : 1.0, child: child),
     );
   }
 }
