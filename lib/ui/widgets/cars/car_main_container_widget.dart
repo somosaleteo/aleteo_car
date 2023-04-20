@@ -110,7 +110,8 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionTrunk,
           top: topPositionTrunk,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.blue : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.blue,
             size: trunkSize,
             child: const CarTrunkAWidget(color: color1),
           ),
@@ -119,8 +120,8 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionDoors,
           top: topPositionDoors,
           vehiclePartWidget: VehiclePartWidget(
-            color:
-                showLayoutColors ? Colors.lightBlueAccent : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.lightBlueAccent,
             size: doorsSize,
             child: const CarDoorsAWidget(),
           ),
@@ -129,7 +130,8 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionCockpick,
           top: topPositionCockpick,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.red : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.red,
             size: cockpickSize,
             child: const CarCockpickAWidget(color: color2),
           ),
@@ -138,7 +140,8 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionRearWheel,
           top: topPositionWheel,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.black12 : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.black12,
             size: wheelSize,
             child: const CarFrontWheelAWidget(),
           ),
@@ -147,7 +150,8 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionWheel,
           top: topPositionWheel,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.black12 : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.black12,
             size: wheelSize,
             child: const CarFrontWheelAWidget(),
           ),
@@ -156,7 +160,8 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionRearBumper,
           top: topPositionRearBumper,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.grey : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.grey,
             size: rearBumperSize,
             child: const CarRearBumperAWidget(
               color: colorBumper,
@@ -167,7 +172,8 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionFrontBumper,
           top: topPositionFrontBumper,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.grey : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.grey,
             size: frontBumperSize,
             child: const CarFrontBumperAWidget(color: colorBumper),
           ),
@@ -176,7 +182,8 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionRearlight,
           top: topPositionRearLight,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.red : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.red,
             size: rearLightSize,
             child: const CarRearLightAWidget(
               color: colorRearLight,
@@ -187,7 +194,8 @@ class CarMainContainerWidget extends StatelessWidget {
           left: leftPositionFrontlight,
           top: topPositionFrontLight,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.yellow : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.deepOrange,
             size: frontLightSize,
             child: const CarFrontLightAWidget(
               color: colorFrontLight,
