@@ -99,13 +99,11 @@ class CarCustomFiatWidget extends StatelessWidget {
           left: leftPositionBonnet,
           top: topPositionBonnet,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.blue : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.blue,
             size: bonnetSize,
-            child: Opacity(
-              opacity: showLayoutColors ? .15 : 1.0,
-              child: const CarBonnetAWidget(
-                color: color1,
-              ),
+            child: const CarBonnetAWidget(
+              color: color1,
             ),
           ),
         ),
@@ -113,69 +111,61 @@ class CarCustomFiatWidget extends StatelessWidget {
           left: leftPositionTrunk,
           top: topPositionTrunk,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.blue : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.blue,
             size: trunkSize,
-            child: Opacity(
-                opacity: showLayoutColors ? .15 : 1.0,
-                child: const CarTrunkAWidget(color: color1)),
+            child: const CarTrunkAWidget(color: color1),
           ),
         ),
         DoorsWidget(
           left: leftPositionDoors,
           top: topPositionDoors,
           vehiclePartWidget: VehiclePartWidget(
-            color:
-                showLayoutColors ? Colors.lightBlueAccent : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.lightBlueAccent,
             size: doorsSize,
-            child: Opacity(
-                opacity: showLayoutColors ? .15 : 1.0,
-                child: const CarDoorsAWidget()),
+            child: const CarDoorsAWidget(),
           ),
         ),
         CockpickWidget(
           left: leftPositionCockpick,
           top: topPositionCockpick,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.red : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.red,
             size: cockpickSize,
-            child: Opacity(
-                opacity: showLayoutColors ? .15 : 1.0,
-                child: const CarCockpickAWidget(color: color2)),
+            child: const CarCockpickAWidget(color: color2),
           ),
         ),
         FrontWheelWidget(
           left: leftPositionRearWheel,
           top: topPositionWheel,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.black12 : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.black12,
             size: wheelSize,
-            child: Opacity(
-                opacity: showLayoutColors ? .15 : 1.0,
-                child: const CarFrontWheelAWidget()),
+            child: const CarFrontWheelAWidget(),
           ),
         ),
         RearWheelWidget(
           left: leftPositionWheel,
           top: topPositionWheel,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.black12 : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.black12,
             size: wheelSize,
-            child: Opacity(
-                opacity: showLayoutColors ? .15 : 1.0,
-                child: const CarFrontWheelAWidget()),
+            child: const CarFrontWheelAWidget(),
           ),
         ),
         RearBumperWidget(
           left: leftPositionRearBumper,
           top: topPositionRearBumper,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.grey : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.grey,
             size: rearBumperSize,
-            child: Opacity(
-              opacity: showLayoutColors ? .15 : 1.0,
-              child: const CarRearBumperAWidget(
-                color: colorBumper,
-              ),
+            child: const CarRearBumperAWidget(
+              color: colorBumper,
             ),
           ),
         ),
@@ -183,18 +173,18 @@ class CarCustomFiatWidget extends StatelessWidget {
           left: leftPositionFrontBumper,
           top: topPositionFrontBumper,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.grey : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.grey,
             size: frontBumperSize,
-            child: Opacity(
-                opacity: showLayoutColors ? .15 : 1.0,
-                child: const CarFrontBumperAWidget(color: colorBumper)),
+            child: const CarFrontBumperAWidget(color: colorBumper),
           ),
         ),
         RearLightWidget(
           left: leftPositionRearlight,
           top: topPositionRearLight,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.red : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.red,
             size: rearLightSize,
             child: Opacity(
               opacity: showLayoutColors ? .15 : 1.0,
@@ -208,13 +198,11 @@ class CarCustomFiatWidget extends StatelessWidget {
           left: leftPositionFrontlight,
           top: topPositionFrontLight,
           vehiclePartWidget: VehiclePartWidget(
-            color: showLayoutColors ? Colors.yellow : Colors.transparent,
+            showLayout: showLayoutColors,
+            color: Colors.yellow,
             size: frontLightSize,
-            child: Opacity(
-              opacity: showLayoutColors ? .15 : 1.0,
-              child: const CarFrontLightAWidget(
-                color: colorFrontLight,
-              ),
+            child: const CarFrontLightAWidget(
+              color: colorFrontLight,
             ),
           ),
         ),
