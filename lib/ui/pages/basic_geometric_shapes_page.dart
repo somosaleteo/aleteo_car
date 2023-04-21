@@ -121,7 +121,7 @@ class BasicGeometricShapesPage extends StatelessWidget {
             ),
           ),
         ),
-        title: "Figuras báscias");
+        title: "Figuras básicas");
   }
 }
 
