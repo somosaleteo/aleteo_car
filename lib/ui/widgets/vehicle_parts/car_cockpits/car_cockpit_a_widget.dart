@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../entities.dart';
 
-class CarCockpickAWidget extends StatelessWidget with EntityCockpick {
-  const CarCockpickAWidget({Key? key, this.color}) : super(key: key);
+class CarCockpitAWidget extends StatelessWidget with EntityCockpick {
+  const CarCockpitAWidget({Key? key, this.color}) : super(key: key);
 
   final Color? color;
   @override

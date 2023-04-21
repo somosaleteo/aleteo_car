@@ -4,7 +4,7 @@ import '../../../../helpers/responsive_helper.dart';
 import '../../main_vehicle_container_widget.dart';
 import '../../vehicle_part_widget.dart';
 import '../../vehicle_parts/car_bonnets/car_bonnet_workshop_custom_painter_widget.dart';
-import '../../vehicle_parts/car_cockpicks/car_cockpick_workshop_custom_painter_widget.dart';
+import '../../vehicle_parts/car_cockpits/car_cockpit_workshop_custom_painter_widget.dart';
 import '../../vehicle_parts/car_doors/car_door_workshop_custom_painter_widget.dart';
 import '../../vehicle_parts/car_front_bumpers/car_front_bumber_workshop_custom_painter_widget.dart';
 import '../../vehicle_parts/car_front_lights/car_front_light_workshop_custom_painter_widget.dart';
@@ -13,7 +13,7 @@ import '../../vehicle_parts/car_rear_lights/car_rear_light_worshop_custom_painte
 import '../../vehicle_parts/car_trunks/car_trunk_workshop_custom_painter_widget.dart';
 import '../../vehicle_parts/car_wheels/car_wheel_workshop_custom_painter_widget.dart';
 import '../car_bonnet_widget.dart';
-import '../cockpick_widget.dart';
+import '../cockpit_widget.dart';
 import '../doors_widget.dart';
 import '../front_bumper_widget.dart';
 import '../front_light_widget.dart';
@@ -39,7 +39,7 @@ class CarWorkshopCustomPainterFiatWidget extends StatelessWidget {
       wheelSizeTmp,
       wheelSizeTmp,
     );
-    final cockpickSize = Size(
+    final cockpitSize = Size(
       dpPercent(
         size.width,
         60,
@@ -66,7 +66,7 @@ class CarWorkshopCustomPainterFiatWidget extends StatelessWidget {
     final trunkSize = doorsSize;
     final bonnetSize = doorsSize;
     final leftPositionWheel = dpPercent(size.width, 8.60);
-    final leftPositionCockpick = dpPercent(size.width, 25);
+    final leftPositionCockpit = dpPercent(size.width, 25);
     final leftPositionDoors = dpPercent(size.width, 34);
     final topPositionDoors = dpPercent(size.height, 41.70);
     final leftPositionTrunk = leftPositionDoors + doorsSize.width - 1.0;
@@ -83,7 +83,7 @@ class CarWorkshopCustomPainterFiatWidget extends StatelessWidget {
     final topPositionFrontLight = dpPercent(size.height, 43.95);
     final leftPositionRearWheel = dpPercent(size.width, 72.29);
     final topPositionWheel = size.height - wheelSize.width;
-    final topPositionCockpick = dpPercent(size.height, 1.0);
+    final topPositionCockpit = dpPercent(size.height, 1.0);
 
     const color1 = Color.fromRGBO(123, 121, 108, 1.0),
         color2 = Color.fromRGBO(201, 44, 242, 1.0),
@@ -130,17 +130,17 @@ class CarWorkshopCustomPainterFiatWidget extends StatelessWidget {
             child: const CarDoorsWorkshopCustomPainterWidget(),
           ),
         ),
-        CockpickWidget(
-          left: leftPositionCockpick,
-          top: topPositionCockpick,
+        CockpitWidget(
+          left: leftPositionCockpit,
+          top: topPositionCockpit,
           vehiclePartWidget: VehiclePartWidget(
             showLayout: showLayoutColors,
             color: Colors.red,
-            size: cockpickSize,
+            size: cockpitSize,
             child: Opacity(
                 opacity: showLayoutColors ? .15 : 1.0,
-                child: const CarCockpickWorkshopCustomPainterWidget(
-                    color: color2)),
+                child:
+                    const CarCockpitWorkshopCustomPainterWidget(color: color2)),
           ),
         ),
         FrontWheelWidget(

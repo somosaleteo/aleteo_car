@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../positioned_vehicle_part_widget.dart';
 import '../vehicle_part_widget.dart';
 
-class CockpickWidget extends PositionedVehiclePartWidget {
-  const CockpickWidget(
+class CockpitWidget extends PositionedVehiclePartWidget {
+  const CockpitWidget(
       {Key? key,
       required double left,
       required double top,

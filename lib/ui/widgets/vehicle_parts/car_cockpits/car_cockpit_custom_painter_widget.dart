@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../entities.dart';
 
-class CarCockpickCustomPainterWidget extends StatelessWidget
+class CarCockpitCustomPainterWidget extends StatelessWidget
     with EntityCockpick {
-  const CarCockpickCustomPainterWidget({Key? key, this.color})
-      : super(key: key);
+  const CarCockpitCustomPainterWidget({Key? key, this.color}) : super(key: key);
 
   final Color? color;
 

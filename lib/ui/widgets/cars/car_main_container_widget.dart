@@ -4,7 +4,7 @@ import '../../../helpers/responsive_helper.dart';
 import '../main_vehicle_container_widget.dart';
 import '../vehicle_part_widget.dart';
 import '../vehicle_parts/car_bonnets/car_bonnet_a_widget.dart';
-import '../vehicle_parts/car_cockpicks/car_cockpick_a_widget.dart';
+import '../vehicle_parts/car_cockpits/car_cockpit_a_widget.dart';
 import '../vehicle_parts/car_doors/car_door_a_widget.dart';
 import '../vehicle_parts/car_front_bumpers/car_front_bumber_a_widget.dart';
 import '../vehicle_parts/car_front_lights/car_front_light_a_widget.dart';
@@ -13,7 +13,7 @@ import '../vehicle_parts/car_rear_lights/car_rear_light_a_widget.dart';
 import '../vehicle_parts/car_trunks/car_trunk_a.dart';
 import '../vehicle_parts/car_wheels/car_wheel_a_widget.dart';
 import 'car_bonnet_widget.dart';
-import 'cockpick_widget.dart';
+import 'cockpit_widget.dart';
 import 'doors_widget.dart';
 import 'front_bumper_widget.dart';
 import 'front_light_widget.dart';
@@ -127,14 +127,14 @@ class CarMainContainerWidget extends StatelessWidget {
             child: const CarDoorsAWidget(),
           ),
         ),
-        CockpickWidget(
+        CockpitWidget(
           left: leftPositionCockpick,
           top: topPositionCockpick,
           vehiclePartWidget: VehiclePartWidget(
             showLayout: showLayoutColors,
             color: Colors.red,
             size: cockpickSize,
-            child: const CarCockpickAWidget(color: color2),
+            child: const CarCockpitAWidget(color: color2),
           ),
         ),
         FrontWheelWidget(
