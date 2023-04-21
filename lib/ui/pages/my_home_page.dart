@@ -4,6 +4,8 @@ import '../../helpers/responsive_helper.dart';
 import '../widgets/cars/car_main_container_widget.dart';
 import '../widgets/cars/car_types/car_custom_painter_fiat_widget.dart';
 import '../widgets/my_custom_scaffold_widget.dart';
+import '../widgets/my_navigator_button_widget.dart';
+import 'basic_geometric_shapes_page.dart';
 import 'box_model_page.dart';
 import 'my_car_container_layout_page.dart';
 import 'my_car_container_page.dart';
@@ -30,13 +32,18 @@ class MyHomePage extends StatelessWidget {
                 const _SeparatorWidget(),
                 const _SeparatorWidget(),
                 const _SeparatorWidget(),
-                MyNavigatorButton(
-                    page: const BoxModelPage(),
-                    size: size,
-                    label: "Box Model",
-                    child: const Icon(Icons.dataset_outlined)),
+                MyNavigatorButtonWidget(
+                  page: const BoxModelPage(),
+                  size: size,
+                  label: "Box Model",
+                  child: SizedBox(
+                    width: size2.width,
+                    height: size2.height,
+                    child: const Icon(Icons.dataset_outlined),
+                  ),
+                ),
                 const _SeparatorWidget(),
-                MyNavigatorButton(
+                MyNavigatorButtonWidget(
                   page: const MyCarContainerPage(),
                   size: size,
                   label: "Sin usar custom painter",
@@ -46,7 +53,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
                 const _SeparatorWidget(),
-                MyNavigatorButton(
+                MyNavigatorButtonWidget(
                   page: const MyCarLayoutPage(),
                   size: size,
                   label: "Layout",
@@ -56,7 +63,17 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
                 const _SeparatorWidget(),
-                MyNavigatorButton(
+                MyNavigatorButtonWidget(
+                  size: size,
+                  label: "Figuras Geométricas básicas",
+                  page: const BasicGeometricShapesPage(),
+                  child: SizedBox(
+                      width: size2.width,
+                      height: size2.height,
+                      child: const Icon(Icons.gesture_outlined)),
+                ),
+                const _SeparatorWidget(),
+                MyNavigatorButtonWidget(
                   page: const MyCarCustomPainterPage(),
                   size: size,
                   label: "Usando Custom Painter",
@@ -81,50 +98,6 @@ class _SeparatorWidget extends StatelessWidget {
     return const SizedBox(
       width: double.infinity,
       height: 10.0,
-    );
-  }
-}
-
-class MyNavigatorButton extends StatelessWidget {
-  const MyNavigatorButton({
-    super.key,
-    required this.size,
-    required this.label,
-    required this.child,
-    required this.page,
-  });
-
-  final Size size;
-  final String label;
-  final Widget child, page;
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialButton(
-      onPressed: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => page,
-            ));
-      },
-      child: Container(
-        height: size.height,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10.0),
-            color: Theme.of(context).dialogBackgroundColor),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            SizedBox(width: size.width * 0.4, child: Text(label)),
-            const SizedBox(
-              width: 20.0,
-            ),
-            child,
-            const Icon(Icons.arrow_forward_ios)
-          ],
-        ),
-      ),
     );
   }
 }
