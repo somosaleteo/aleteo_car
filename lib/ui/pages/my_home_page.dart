@@ -25,7 +25,11 @@ class MyHomePage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Presentacion custom painter"),
+                const _SeparatorWidget(),
+                const _SeparatorWidget(),
+                const _SeparatorWidget(),
+                const _SeparatorWidget(),
+                const _SeparatorWidget(),
                 MyNavigatorButton(
                     page: const BoxModelPage(),
                     size: size,
