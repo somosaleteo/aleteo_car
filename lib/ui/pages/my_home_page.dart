@@ -1,14 +1,14 @@
-import 'package:aleteo_car/ui/pages/my_car__workshop_custom_painter_page.dart';
-import 'package:aleteo_car/ui/widgets/cars/car_types/car_workshop_custom_painter_fiat_widget%20copy.dart';
 import 'package:flutter/material.dart';
 
 import '../../helpers/responsive_helper.dart';
 import '../widgets/cars/car_main_container_widget.dart';
 import '../widgets/cars/car_types/car_custom_painter_fiat_widget.dart';
+import '../widgets/cars/car_types/car_workshop_custom_painter_fiat_widget_copy.dart';
 import '../widgets/my_custom_scaffold_widget.dart';
 import '../widgets/my_navigator_button_widget.dart';
 import 'basic_geometric_shapes_page.dart';
 import 'box_model_page.dart';
+import 'my_car__workshop_custom_painter_page.dart';
 import 'my_car_container_layout_page.dart';
 import 'my_car_container_page.dart';
 import 'my_car_custom_painter_page.dart';

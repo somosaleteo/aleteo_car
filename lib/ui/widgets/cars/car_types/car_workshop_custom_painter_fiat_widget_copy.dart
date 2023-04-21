@@ -1,17 +1,17 @@
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_bonnets/car_bonnet_workshop_custom_painter_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_cockpicks/car_cockpick_workshop_custom_painter_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_doors/car_door_workshop_custom_painter_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_front_bumpers/car_front_bumber_workshop_custom_painter_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_front_lights/car_front_light_workshop_custom_painter_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_rear_bumpers/car_rear_bumper_workshop_custom_painter_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_rear_lights/car_rear_light_worshop_custom_painter_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_trunks/car_trunk_workshop_custom_painter_widget.dart';
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_wheels/car_wheel_workshop_custom_painter_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../helpers/responsive_helper.dart';
 import '../../main_vehicle_container_widget.dart';
 import '../../vehicle_part_widget.dart';
+import '../../vehicle_parts/car_bonnets/car_bonnet_workshop_custom_painter_widget.dart';
+import '../../vehicle_parts/car_cockpicks/car_cockpick_workshop_custom_painter_widget.dart';
+import '../../vehicle_parts/car_doors/car_door_workshop_custom_painter_widget.dart';
+import '../../vehicle_parts/car_front_bumpers/car_front_bumber_workshop_custom_painter_widget.dart';
+import '../../vehicle_parts/car_front_lights/car_front_light_workshop_custom_painter_widget.dart';
+import '../../vehicle_parts/car_rear_bumpers/car_rear_bumper_workshop_custom_painter_widget.dart';
+import '../../vehicle_parts/car_rear_lights/car_rear_light_worshop_custom_painter_widget.dart';
+import '../../vehicle_parts/car_trunks/car_trunk_workshop_custom_painter_widget.dart';
+import '../../vehicle_parts/car_wheels/car_wheel_workshop_custom_painter_widget.dart';
 import '../car_bonnet_widget.dart';
 import '../cockpick_widget.dart';
 import '../doors_widget.dart';
