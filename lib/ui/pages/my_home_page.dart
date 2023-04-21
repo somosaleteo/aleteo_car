@@ -1,3 +1,5 @@
+import 'package:aleteo_car/ui/pages/my_car__workshop_custom_painter_page.dart';
+import 'package:aleteo_car/ui/widgets/cars/car_types/car_workshop_custom_painter_fiat_widget%20copy.dart';
 import 'package:flutter/material.dart';
 
 import '../../helpers/responsive_helper.dart';
@@ -78,6 +80,15 @@ class MyHomePage extends StatelessWidget {
                   size: size,
                   label: "Usando Custom Painter",
                   child: CarCustomPainterFiatWidget(
+                    size: size2,
+                    showLayoutColors: false,
+                  ),
+                ),
+                MyNavigatorButtonWidget(
+                  page: const MyCarWorkshopCustomPainterPage(),
+                  size: size,
+                  label: "¡Pintemos!",
+                  child: CarWorkshopCustomPainterFiatWidget(
                     size: size2,
                     showLayoutColors: false,
                   ),
