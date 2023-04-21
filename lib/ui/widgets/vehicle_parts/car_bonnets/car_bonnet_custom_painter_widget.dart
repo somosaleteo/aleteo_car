@@ -28,15 +28,8 @@ class _CarBonnetPainter extends CustomPainter {
 
     final path = Path()
       ..moveTo(0, size.height)
-      ..lineTo(0, size.height * 0.485)
-      ..cubicTo(
-        0, // punto de control inicial x
-        size.height * 0.485, // punto de control inicial y
-        0, // punto de control final x
-        0, // punto de control final y
-        size.width * 0.515, // punto final x
-        0,
-      )
+      ..lineTo(0, size.height * 0.5)
+      ..quadraticBezierTo(size.width * 0, 0, size.height * 0.5, 0)
       ..lineTo(size.width, 0)
       ..lineTo(size.width, size.height)
       ..close();

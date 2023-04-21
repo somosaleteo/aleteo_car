@@ -32,7 +32,7 @@ class _CarFrontLightPainter extends CustomPainter {
       ..moveTo(0, size.height)
       ..lineTo(size.width, size.height)
       ..lineTo(size.width, 0)
-      ..cubicTo(size.width, 0, 0, 0, 0, size.height)
+      ..quadraticBezierTo(0, 0, 0, size.height)
       ..close();
 
     canvas.drawPath(path, paint);

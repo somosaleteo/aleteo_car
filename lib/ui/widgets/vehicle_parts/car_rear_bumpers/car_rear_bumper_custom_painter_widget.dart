@@ -23,14 +23,7 @@ class CarRearBumperPainter extends CustomPainter {
     final carRearBrush = Paint()..color = color;
     final carRearPath = Path()
       ..lineTo(size.width, 0)
-      ..cubicTo(
-        size.width,
-        0,
-        size.width,
-        size.height,
-        0,
-        size.height,
-      )
+      ..quadraticBezierTo(size.width, size.height, 0, size.height)
       ..close();
 
     canvas.drawPath(carRearPath, carRearBrush);

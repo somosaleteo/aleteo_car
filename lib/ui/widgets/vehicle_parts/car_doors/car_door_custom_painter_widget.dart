@@ -23,15 +23,10 @@ class _CarDoorsPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    final rect = Rect.fromLTRB(0, 0, size.width, size.height);
     final paint = Paint()..color = color;
 
-    final path = Path()
-      ..lineTo(size.width, 0)
-      ..lineTo(size.width, size.height)
-      ..lineTo(0, size.height)
-      ..close();
-
-    canvas.drawPath(path, paint);
+    canvas.drawRect(rect, paint);
   }
 
   @override

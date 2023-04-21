@@ -22,14 +22,7 @@ class CarRearLightPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final carRearLightBrush = Paint()..color = color;
     final carRearPath = Path()
-      ..cubicTo(
-        0,
-        0,
-        size.width,
-        0,
-        size.width,
-        size.height,
-      )
+      ..quadraticBezierTo(size.width, 0, size.width, size.height)
       ..lineTo(0, size.height)
       ..close();
 

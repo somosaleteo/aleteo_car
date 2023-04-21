@@ -30,22 +30,8 @@ class _CarCockpickPainter extends CustomPainter {
     final path = Path()
       ..moveTo(0, size.height)
       ..lineTo(0, size.height * 0.8)
-      ..cubicTo(
-        0, // punto de control inicial x
-        size.height * 0.8, // punto de control inicial y
-        0, // punto de control final x
-        0, // punto de control final y
-        size.width / 2, // punto final x
-        0,
-      )
-      ..cubicTo(
-        size.width / 2,
-        0,
-        size.width,
-        0,
-        size.width,
-        size.height * 0.8,
-      )
+      ..quadraticBezierTo(0, 0, size.width / 2, 0)
+      ..quadraticBezierTo(size.width, 0, size.width, size.height)
       ..lineTo(size.width, size.height)
       ..close();
 

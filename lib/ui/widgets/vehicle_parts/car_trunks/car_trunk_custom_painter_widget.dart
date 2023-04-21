@@ -27,9 +27,7 @@ class CarTrunkPainter extends CustomPainter {
     final trunkBrush = Paint()..color = color;
     final trunkPath = Path()
       ..lineTo(size.width * 0.85, 0)
-      ..cubicTo(
-        size.width * 0.85,
-        0,
+      ..quadraticBezierTo(
         size.width,
         0,
         size.width,

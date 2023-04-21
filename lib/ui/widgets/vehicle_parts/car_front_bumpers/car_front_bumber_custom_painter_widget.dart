@@ -31,7 +31,7 @@ class _CarFrontBumperPainter extends CustomPainter {
     final path = Path()
       ..lineTo(size.width, 0)
       ..lineTo(size.width, size.height)
-      ..cubicTo(size.width, size.height, 0, size.height, 0, 0)
+      ..quadraticBezierTo(0, size.height, 0, 0)
       ..close();
 
     canvas.drawPath(path, paint);
