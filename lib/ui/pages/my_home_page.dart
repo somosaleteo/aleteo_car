@@ -1,3 +1,4 @@
+import 'package:aleteo_car/ui/pages/seno_animation_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../helpers/responsive_helper.dart';
@@ -91,6 +92,17 @@ class MyHomePage extends StatelessWidget {
                   child: CarWorkshopCustomPainterFiatWidget(
                     size: size2,
                     showLayoutColors: false,
+                  ),
+                ),
+                MyNavigatorButtonWidget(
+                  page: const SinAnimationPage(),
+                  size: size,
+                  label: "¡Animemos un circulo!",
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.purpleAccent,
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
                   ),
                 ),
               ],
