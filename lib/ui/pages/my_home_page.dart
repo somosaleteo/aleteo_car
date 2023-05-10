@@ -8,6 +8,7 @@ import '../widgets/my_custom_scaffold_widget.dart';
 import '../widgets/my_navigator_button_widget.dart';
 import 'basic_geometric_shapes_page.dart';
 import 'box_model_page.dart';
+import 'landscape_animation_page.dart';
 import 'my_car__workshop_custom_painter_page.dart';
 import 'my_car_container_layout_page.dart';
 import 'my_car_container_page.dart';
@@ -92,6 +93,13 @@ class MyHomePage extends StatelessWidget {
                     size: size2,
                     showLayoutColors: false,
                   ),
+                ),
+                const _SeparatorWidget(),
+                MyNavigatorButtonWidget(
+                  page: const LandScapeAnimationPage(),
+                  size: size,
+                  label: "Animaciones",
+                  child: const SizedBox(child: Icon(Icons.animation_rounded)),
                 ),
               ],
             ),
