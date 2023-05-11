@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import 'cube_stack_faces_widget.dart';
@@ -24,7 +22,7 @@ class _CubeTransformWidgetState extends State<CubeTransformWidget>
     );
 
     final Animation<double> animation =
-        Tween(begin: 0.0, end: pi * 40).animate(cubeAnimationController);
+        Tween(begin: 0.0, end: 125.66).animate(cubeAnimationController);
     animation.addListener(() {
       setState(() {
         transformationMatrix = Matrix4.identity()
@@ -34,7 +32,7 @@ class _CubeTransformWidgetState extends State<CubeTransformWidget>
       });
     });
 
-    cubeAnimationController.forward();
+    cubeAnimationController.repeat(reverse: true);
   }
 
   @override

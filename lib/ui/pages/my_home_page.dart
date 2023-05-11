@@ -100,7 +100,7 @@ class MyHomePage extends StatelessWidget {
                   page: const LandScapeAnimationPage(),
                   size: size,
                   label: "Animaciones",
-                  child: const SizedBox(child: Icon(Icons.animation_rounded)),
+                  child: const SizedBox(child: Icon(Icons.landscape_rounded)),
                 ),
                 const _SeparatorWidget(),
                 MyNavigatorButtonWidget(
