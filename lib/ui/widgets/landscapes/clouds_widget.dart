@@ -8,8 +8,12 @@ class CloudsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: CustomPaint(
-        painter: _CloudsPainter(color: color ?? Colors.white),
+      height: 105,
+      width: 120,
+      child: ClipRect(
+        child: CustomPaint(
+          painter: _CloudsPainter(color: color ?? Colors.white),
+        ),
       ),
     );
   }
@@ -26,12 +30,28 @@ class _CloudsPainter extends CustomPainter {
       ..color = Colors.white
       ..style = PaintingStyle.fill;
 
-    canvas.drawCircle(const Offset(50, 50), 30, paint);
-    canvas.drawCircle(const Offset(80, 50), 30, paint);
-    canvas.drawCircle(const Offset(110, 50), 30, paint);
-    canvas.drawCircle(const Offset(70, 80), 30, paint);
-    canvas.drawCircle(const Offset(100, 80), 30, paint);
-    canvas.drawCircle(const Offset(85, 65), 30, paint);
+    var xScale = size.width / 140;
+    var yScale = size.height / 110;
+    var offsetX = (size.width - 140) / 2;
+    var offsetY = (size.height - 110) / 2;
+
+    Path path = Path()
+      ..addOval(Rect.fromCircle(
+          center: Offset(50 * xScale, 50 * yScale), radius: 30 * xScale))
+      ..addOval(Rect.fromCircle(
+          center: Offset(80 * xScale, 50 * yScale), radius: 30 * xScale))
+      ..addOval(Rect.fromCircle(
+          center: Offset(110 * xScale, 50 * yScale), radius: 30 * xScale))
+      ..addOval(Rect.fromCircle(
+          center: Offset(70 * xScale, 80 * yScale), radius: 30 * xScale))
+      ..addOval(Rect.fromCircle(
+          center: Offset(100 * xScale, 80 * yScale), radius: 30 * xScale))
+      ..addOval(Rect.fromCircle(
+          center: Offset(85 * xScale, 65 * yScale), radius: 30 * xScale));
+
+    canvas.translate(offsetX, offsetY);
+    canvas.drawPath(path, paint);
+    canvas.restore();
   }
 
   @override

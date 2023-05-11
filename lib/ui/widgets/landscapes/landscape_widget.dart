@@ -27,6 +27,8 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
   late Animation<Color?> windowsColorTweenAnimation;
   late Animation<double> sunRotateAnimation;
   late Animation<double> sizeAnimation;
+  late Animation<Offset> cloudsTranslation;
+  late Animation<Offset> objectsTranslation;
   Color currentColor = Colors.blueAccent;
   double currentAngle = 0.0;
 
@@ -46,7 +48,7 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
     ).animate(
       CurvedAnimation(
         parent: animatedController,
-        curve: const Interval(0, 0.75),
+        curve: const Interval(0, 0.5),
       ),
     );
     //Sun Rays Effect Color Change Animation
@@ -56,7 +58,7 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
     ).animate(
       CurvedAnimation(
         parent: animatedController,
-        curve: const Interval(0, 0.75),
+        curve: const Interval(0, 0.5),
       ),
     );
     //Landscape Effect Color Change Animation
@@ -66,7 +68,7 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
     ).animate(
       CurvedAnimation(
         parent: animatedController,
-        curve: const Interval(0, 0.75),
+        curve: const Interval(0, 0.5),
       ),
     );
     //Sun Rotation Animation
@@ -76,7 +78,7 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
     ).animate(
       CurvedAnimation(
         parent: animatedController,
-        curve: const Interval(0, 0.75),
+        curve: const Interval(0, 0.5),
       ),
     );
     //Sun Size Change Animation
@@ -86,9 +88,25 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
     ).animate(
       CurvedAnimation(
         parent: animatedController,
-        curve: const Interval(0, 0.75),
+        curve: const Interval(0, 0.5),
       ),
     );
+    //Clouds Translation Animation
+    cloudsTranslation = Tween<Offset>(
+      begin: const Offset(-1.7, 0),
+      end: const Offset(1, 0),
+    ).animate(animatedController)
+      ..addListener(() {
+        setState(() {});
+      });
+    //Objects Translation Animation
+    objectsTranslation = Tween<Offset>(
+      begin: const Offset(-3, 0),
+      end: const Offset(1, 0),
+    ).animate(animatedController)
+      ..addListener(() {
+        setState(() {});
+      });
     animatedController.repeat(reverse: false);
     animatedController.addListener(
       () {
@@ -146,66 +164,71 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                CloudsWidget(),
-                CloudsWidget(),
-                CloudsWidget(),
-              ],
+            SlideTransition(
+              position: cloudsTranslation,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    CloudsWidget(),
+                    CloudsWidget(),
+                    CloudsWidget(),
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 200,
             ),
-            Stack(
-              children: [
-                Row(
+            SlideTransition(
+              position: objectsTranslation,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: const [
-                    TreeWidget(
+                  children: [
+                    const TreeWidget(
                       height: 200,
                       width: 200,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 80,
                     ),
-                    BuildingWidget(
+                    const BuildingWidget(
                       height: 300,
                       width: 200,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 70,
                     ),
-                    TreeWidget(
+                    const TreeWidget(
                       height: 200,
                       width: 200,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 70,
                     ),
-                    HouseWidget(
+                    const HouseWidget(
                       height: 150,
                       width: 130,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 80,
                     ),
-                    TreeWidget(
+                    const TreeWidget(
                       height: 200,
                       width: 200,
                     ),
+                    CarCustomPainterFiatWidget(
+                      size: size,
+                      showLayoutColors: false,
+                    ),
                   ],
                 ),
-                CarCustomPainterFiatWidget(
-                  size: size,
-                  showLayoutColors: false,
-                ),
-              ],
+              ),
             ),
-            StreetWidget(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-            ),
+            const Expanded(child: StreetWidget()),
           ],
         ),
       ),
