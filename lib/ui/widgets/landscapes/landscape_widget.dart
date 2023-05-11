@@ -20,89 +20,133 @@ class LandscapeWidget extends StatefulWidget {
 
 class _LandscapeWidgetState extends State<LandscapeWidget>
     with SingleTickerProviderStateMixin {
-  late Animation<double> rotate;
-  late Animation<Offset> carTranslation;
-  late Animation<Offset> cloudsTranslation;
-  late AnimationController animationController;
-  late Animation<Offset> objectsTranslation;
+  late AnimationController animatedController;
+  late Animation<Color?> sunColorTweenAnimation;
+  late Animation<Color?> sunRaysColorTweenAnimation;
+  late Animation<Color?> landscapeColorTweenAnimation;
+  late Animation<Color?> windowsColorTweenAnimation;
+  late Animation<double> sunRotateAnimation;
+  late Animation<double> sizeAnimation;
+  Color currentColor = Colors.blueAccent;
+  double currentAngle = 0.0;
 
   @override
   void initState() {
     super.initState();
-    animationController =
-        AnimationController(duration: const Duration(seconds: 20), vsync: this);
-    rotate = Tween<double>(begin: 0, end: -1).animate(animationController);
-
-    carTranslation = Tween<Offset>(
-      begin: const Offset(2, 0),
-      end: const Offset(-1, 0),
-    ).animate(animationController)
-      ..addListener(
-        () {
-          setState(() {});
-        },
-      );
-    cloudsTranslation = Tween<Offset>(
-      begin: const Offset(-1.6, -3),
-      end: const Offset(1, 8),
-    ).animate(animationController)
-      ..addListener(
-        () {
-          setState(() {});
-        },
-      );
-    objectsTranslation = Tween<Offset>(
-      begin: const Offset(-3, 0),
-      end: const Offset(1, 0),
-    ).animate(animationController)
-      ..addListener(
-        () {
-          setState(() {});
-        },
-      );
-    animationController.repeat(reverse: false);
+    animatedController = AnimationController(
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 6000,
+      ),
+    );
+    //Sun Color Change Animation
+    sunColorTweenAnimation = ColorTween(
+      begin: Colors.yellow,
+      end: Colors.blueGrey.shade900,
+    ).animate(
+      CurvedAnimation(
+        parent: animatedController,
+        curve: const Interval(0, 0.75),
+      ),
+    );
+    //Sun Rays Effect Color Change Animation
+    sunRaysColorTweenAnimation = ColorTween(
+      begin: Colors.white.withOpacity(0.2),
+      end: Colors.white.withOpacity(0.0),
+    ).animate(
+      CurvedAnimation(
+        parent: animatedController,
+        curve: const Interval(0, 0.75),
+      ),
+    );
+    //Landscape Effect Color Change Animation
+    landscapeColorTweenAnimation = ColorTween(
+      begin: Colors.blue[300],
+      end: Colors.blueGrey.shade900,
+    ).animate(
+      CurvedAnimation(
+        parent: animatedController,
+        curve: const Interval(0, 0.75),
+      ),
+    );
+    //Sun Rotation Animation
+    sunRotateAnimation = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(
+      CurvedAnimation(
+        parent: animatedController,
+        curve: const Interval(0, 0.75),
+      ),
+    );
+    //Sun Size Change Animation
+    sizeAnimation = Tween<double>(
+      begin: 70,
+      end: 40,
+    ).animate(
+      CurvedAnimation(
+        parent: animatedController,
+        curve: const Interval(0, 0.75),
+      ),
+    );
+    animatedController.repeat(reverse: false);
+    animatedController.addListener(
+      () {
+        setState(
+          () {
+            currentColor = sunColorTweenAnimation.value!;
+            currentAngle = sunRotateAnimation.value;
+          },
+        );
+      },
+    );
   }
 
   @override
   void dispose() {
-    animationController.dispose();
+    animatedController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final Color landscapeColor = landscapeColorTweenAnimation.value!;
+
     final tmp = dpFromSize(MediaQuery.of(context).size, 380, true);
     final Size size = Size(tmp * 1.25, tmp);
 
-    double sunSize = 70;
+    final double sunSize = sizeAnimation.value;
 
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      color: Colors.transparent,
-      child: Column(
-        children: [
-          RotationTransition(
-            turns: rotate,
-            child: SizedBox(
-              width: sunSize,
-              height: sunSize,
-              child: CustomPaint(
+    return Scaffold(
+      backgroundColor: landscapeColor,
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        title: const Text('¿Y si viajamos?'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              height: 70,
+              child: Transform.rotate(
+                angle: sunRotateAnimation.value,
+                child: CustomPaint(
                   painter: SunEffectPainter(
-                      screenWidth: MediaQuery.of(context).size.width),
+                      screenWidth: MediaQuery.of(context).size.width,
+                      sunRayColor: sunRaysColorTweenAnimation.value!),
                   child: Container(
                     width: sunSize,
                     height: sunSize,
-                    decoration: const BoxDecoration(
-                      color: Colors.yellow,
+                    decoration: BoxDecoration(
+                      color: sunColorTweenAnimation.value,
                       shape: BoxShape.circle,
                     ),
-                  )),
+                  ),
+                ),
+              ),
             ),
-          ),
-          SlideTransition(
-            position: cloudsTranslation,
-            child: Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
                 CloudsWidget(),
@@ -110,15 +154,12 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
                 CloudsWidget(),
               ],
             ),
-          ),
-          const SizedBox(
-            height: 200,
-          ),
-          Stack(
-            children: [
-              SlideTransition(
-                position: objectsTranslation,
-                child: Row(
+            const SizedBox(
+              height: 200,
+            ),
+            Stack(
+              children: [
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: const [
                     TreeWidget(
@@ -155,18 +196,18 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
                     ),
                   ],
                 ),
-              ),
-              SlideTransition(
-                position: carTranslation,
-                child: CarCustomPainterFiatWidget(
+                CarCustomPainterFiatWidget(
                   size: size,
                   showLayoutColors: false,
                 ),
-              ),
-            ],
-          ),
-          const StreetWidget(),
-        ],
+              ],
+            ),
+            StreetWidget(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -174,9 +215,13 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
 
 class SunEffectPainter extends CustomPainter {
   final double screenWidth;
+  final Color sunRayColor;
   final double totalEffectShine = 20;
 
-  SunEffectPainter({required this.screenWidth});
+  SunEffectPainter({
+    required this.screenWidth,
+    required this.sunRayColor,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -184,9 +229,10 @@ class SunEffectPainter extends CustomPainter {
     double radiusArcShape = screenWidth;
 
     List<Color> colors = [
-      Colors.white.withOpacity(0.2),
-      Colors.white.withOpacity(0)
+      sunRayColor,
+      Colors.white.withOpacity(0),
     ];
+
     Paint paint = Paint()
       ..shader = ui.Gradient.radial(
         offset,
