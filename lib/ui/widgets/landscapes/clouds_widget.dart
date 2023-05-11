@@ -49,6 +49,7 @@ class _CloudsPainter extends CustomPainter {
       ..addOval(Rect.fromCircle(
           center: Offset(85 * xScale, 65 * yScale), radius: 30 * xScale));
 
+    canvas.save();
     canvas.translate(offsetX, offsetY);
     canvas.drawPath(path, paint);
     canvas.restore();

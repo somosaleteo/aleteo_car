@@ -93,8 +93,8 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
     );
     //Clouds Translation Animation
     cloudsTranslation = Tween<Offset>(
-      begin: const Offset(-1.7, 0),
-      end: const Offset(1, 0),
+      begin: const Offset(0, 0),
+      end: const Offset(2, 0),
     ).animate(animatedController)
       ..addListener(() {
         setState(() {});
