@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
 class TreeWidget extends StatelessWidget {
-  const TreeWidget({Key? key}) : super(key: key);
+  const TreeWidget({Key? key, required this.width, required this.height})
+      : super(key: key);
+
+  final double width;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      size: const Size(200, 200),
+      size: Size(width, height),
       painter: _TreePainter(),
     );
   }

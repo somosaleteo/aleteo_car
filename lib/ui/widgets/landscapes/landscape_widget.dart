@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 
 import '../../../helpers/responsive_helper.dart';
 import '../cars/car_types/car_custom_painter_fiat_widget.dart';
+import 'building_widget.dart';
 import 'clouds_widget.dart';
+import 'house_widget.dart';
 import 'street_widget.dart';
 
 class LandscapeWidget extends StatefulWidget {
@@ -22,7 +24,7 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
   late Animation<Offset> carTranslation;
   late Animation<Offset> cloudsTranslation;
   late AnimationController animationController;
-  late Animation<Offset> treeTranslation;
+  late Animation<Offset> objectsTranslation;
 
   @override
   void initState() {
@@ -41,7 +43,7 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
         },
       );
     cloudsTranslation = Tween<Offset>(
-      begin: const Offset(-1.7, -3),
+      begin: const Offset(-1.6, -3),
       end: const Offset(1, 8),
     ).animate(animationController)
       ..addListener(
@@ -49,8 +51,8 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
           setState(() {});
         },
       );
-    treeTranslation = Tween<Offset>(
-      begin: const Offset(-1, 0),
+    objectsTranslation = Tween<Offset>(
+      begin: const Offset(-3, 0),
       end: const Offset(1, 0),
     ).animate(animationController)
       ..addListener(
@@ -110,28 +112,55 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
             ),
           ),
           const SizedBox(
-            height: 350,
+            height: 200,
           ),
           Stack(
             children: [
               SlideTransition(
-                position: treeTranslation,
+                position: objectsTranslation,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: const [
-                    TreeWidget(),
-                    TreeWidget(),
+                    TreeWidget(
+                      height: 200,
+                      width: 200,
+                    ),
+                    SizedBox(
+                      width: 80,
+                    ),
+                    BuildingWidget(
+                      height: 300,
+                      width: 200,
+                    ),
+                    SizedBox(
+                      width: 70,
+                    ),
+                    TreeWidget(
+                      height: 200,
+                      width: 200,
+                    ),
+                    SizedBox(
+                      width: 70,
+                    ),
+                    HouseWidget(
+                      height: 150,
+                      width: 130,
+                    ),
+                    SizedBox(
+                      width: 80,
+                    ),
+                    TreeWidget(
+                      height: 200,
+                      width: 200,
+                    ),
                   ],
                 ),
               ),
-              Transform.translate(
-                offset: const Offset(0, 25),
-                child: SlideTransition(
-                  position: carTranslation,
-                  child: CarCustomPainterFiatWidget(
-                    size: size,
-                    showLayoutColors: false,
-                  ),
+              SlideTransition(
+                position: carTranslation,
+                child: CarCustomPainterFiatWidget(
+                  size: size,
+                  showLayoutColors: false,
                 ),
               ),
             ],
