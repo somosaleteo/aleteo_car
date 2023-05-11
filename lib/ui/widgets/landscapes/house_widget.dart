@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 class HouseWidget extends StatelessWidget {
-  final double width;
-  final double height;
-
   const HouseWidget({
     super.key,
-    required this.width,
-    required this.height,
   });
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      size: Size(width, height),
-      painter: _HousePainter(),
+    return SizedBox(
+      height: 205,
+      width: 150,
+      child: ClipRRect(
+        child: CustomPaint(
+          painter: _HousePainter(),
+        ),
+      ),
     );
   }
 }
