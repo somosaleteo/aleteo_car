@@ -6,6 +6,7 @@ import '../widgets/cars/car_types/car_custom_painter_fiat_widget.dart';
 import '../widgets/cars/car_types/car_workshop_custom_painter_fiat_widget_copy.dart';
 import '../widgets/my_custom_scaffold_widget.dart';
 import '../widgets/my_navigator_button_widget.dart';
+import 'animated_cube_page.dart';
 import 'basic_geometric_shapes_page.dart';
 import 'box_model_page.dart';
 import 'landscape_animation_page.dart';
@@ -100,6 +101,13 @@ class MyHomePage extends StatelessWidget {
                   size: size,
                   label: "Animaciones",
                   child: const SizedBox(child: Icon(Icons.animation_rounded)),
+                ),
+                const _SeparatorWidget(),
+                MyNavigatorButtonWidget(
+                  page: const AnimatedCubePage(),
+                  size: size,
+                  label: "Cubito",
+                  child: const SizedBox(child: Icon(Icons.view_in_ar_outlined)),
                 ),
               ],
             ),
