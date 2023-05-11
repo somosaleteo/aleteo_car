@@ -24,7 +24,6 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
   late Animation<Color?> sunColorTweenAnimation;
   late Animation<Color?> sunRaysColorTweenAnimation;
   late Animation<Color?> landscapeColorTweenAnimation;
-  late Animation<Color?> windowsColorTweenAnimation;
   late Animation<double> sunRotateAnimation;
   late Animation<double> sizeAnimation;
   late Animation<Offset> cloudsTranslation;
@@ -38,17 +37,17 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
     animatedController = AnimationController(
       vsync: this,
       duration: const Duration(
-        milliseconds: 6000,
+        seconds: 10,
       ),
     );
     //Sun Color Change Animation
     sunColorTweenAnimation = ColorTween(
       begin: Colors.yellow,
-      end: Colors.blueGrey.shade900,
+      end: Colors.white,
     ).animate(
       CurvedAnimation(
         parent: animatedController,
-        curve: const Interval(0, 0.5),
+        curve: const Interval(0, 1),
       ),
     );
     //Sun Rays Effect Color Change Animation
@@ -68,7 +67,7 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
     ).animate(
       CurvedAnimation(
         parent: animatedController,
-        curve: const Interval(0, 0.5),
+        curve: const Interval(0, 1),
       ),
     );
     //Sun Rotation Animation
@@ -142,95 +141,91 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
         backgroundColor: Colors.transparent,
         title: const Text('¿Y si viajamos?'),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 70,
-              child: Transform.rotate(
-                angle: sunRotateAnimation.value,
-                child: CustomPaint(
-                  painter: SunEffectPainter(
-                      screenWidth: MediaQuery.of(context).size.width,
-                      sunRayColor: sunRaysColorTweenAnimation.value!),
-                  child: Container(
-                    width: sunSize,
-                    height: sunSize,
-                    decoration: BoxDecoration(
-                      color: sunColorTweenAnimation.value,
-                      shape: BoxShape.circle,
-                    ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 70,
+            child: Transform.rotate(
+              angle: sunRotateAnimation.value,
+              child: CustomPaint(
+                painter: SunEffectPainter(
+                    screenWidth: MediaQuery.of(context).size.width,
+                    sunRayColor: sunRaysColorTweenAnimation.value!),
+                child: Container(
+                  width: sunSize,
+                  height: sunSize,
+                  decoration: BoxDecoration(
+                    color: sunColorTweenAnimation.value,
+                    shape: BoxShape.circle,
                   ),
                 ),
               ),
             ),
-            SlideTransition(
-              position: cloudsTranslation,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const [
-                    CloudsWidget(),
-                    CloudsWidget(),
-                    CloudsWidget(),
-                  ],
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: const [
+                CloudsWidget(),
+                CloudsWidget(),
+                CloudsWidget(),
+                CloudsWidget(),
+                CloudsWidget(),
+                CloudsWidget(),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 130,
+          ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                const TreeWidget(
+                  height: 200,
+                  width: 200,
                 ),
-              ),
-            ),
-            const SizedBox(
-              height: 200,
-            ),
-            SlideTransition(
-              position: objectsTranslation,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const TreeWidget(
-                      height: 200,
-                      width: 200,
-                    ),
-                    const SizedBox(
-                      width: 80,
-                    ),
-                    const BuildingWidget(
-                      height: 300,
-                      width: 200,
-                    ),
-                    const SizedBox(
-                      width: 70,
-                    ),
-                    const TreeWidget(
-                      height: 200,
-                      width: 200,
-                    ),
-                    const SizedBox(
-                      width: 70,
-                    ),
-                    const HouseWidget(
-                      height: 150,
-                      width: 130,
-                    ),
-                    const SizedBox(
-                      width: 80,
-                    ),
-                    const TreeWidget(
-                      height: 200,
-                      width: 200,
-                    ),
-                    CarCustomPainterFiatWidget(
-                      size: size,
-                      showLayoutColors: false,
-                    ),
-                  ],
+                const SizedBox(
+                  width: 80,
                 ),
-              ),
+                const BuildingWidget(
+                  height: 300,
+                  width: 200,
+                ),
+                const SizedBox(
+                  width: 70,
+                ),
+                const TreeWidget(
+                  height: 200,
+                  width: 200,
+                ),
+                const SizedBox(
+                  width: 70,
+                ),
+                const HouseWidget(
+                  height: 150,
+                  width: 130,
+                ),
+                const SizedBox(
+                  width: 80,
+                ),
+                const TreeWidget(
+                  height: 200,
+                  width: 200,
+                ),
+                CarCustomPainterFiatWidget(
+                  size: size,
+                  showLayoutColors: false,
+                ),
+              ],
             ),
-            const Expanded(child: StreetWidget()),
-          ],
-        ),
+          ),
+          const Expanded(child: StreetWidget()),
+        ],
       ),
     );
   }
