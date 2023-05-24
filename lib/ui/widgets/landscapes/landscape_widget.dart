@@ -179,11 +179,11 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
             scrollDirection: Axis.horizontal,
             child: SlideTransition(
               position: cloudsTranslation,
-              child: SizedBox(
+              child: const SizedBox(
                 width: 500,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
+                  children: [
                     CloudsWidget(),
                     CloudsWidget(),
                     CloudsWidget(),
@@ -202,11 +202,11 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
                 scrollDirection: Axis.horizontal,
                 child: SlideTransition(
                   position: objectsTranslation,
-                  child: Row(
+                  child: const Row(
                     //mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     //mainAxisSize: MainAxisSize.max,
-                    children: const [
+                    children: [
                       TreeWidget(),
                       SizedBox(
                         width: 80,
