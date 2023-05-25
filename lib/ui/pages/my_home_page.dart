@@ -1,3 +1,4 @@
+import 'package:aleteo_car/ui/pages/seno_animation_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../helpers/responsive_helper.dart';
@@ -96,27 +97,16 @@ class MyHomePage extends StatelessWidget {
                     showLayoutColors: false,
                   ),
                 ),
-                const _SeparatorWidget(),
-                MyNavigatorButtonWidget(
-                  page: const LandScapeAnimationPage(),
+                 MyNavigatorButtonWidget(
+                  page: const SinAnimationPage(),
                   size: size,
-                  label: "Paisaje Animado",
-                  child: const SizedBox(child: Icon(Icons.landscape_rounded)),
-                ),
-                const _SeparatorWidget(),
-                MyNavigatorButtonWidget(
-                  page: const AnimatedCubePage(),
-                  size: size,
-                  label: "Cubito",
-                  child: const SizedBox(child: Icon(Icons.view_in_ar_outlined)),
-                ),
-                const _SeparatorWidget(),
-                MyNavigatorButtonWidget(
-                  page: const AnimatedBallPage(),
-                  size: size,
-                  label: "Pelota animada",
-                  child:
-                      const SizedBox(child: Icon(Icons.sports_soccer_outlined)),
+                  label: "¡Animemos un circulo!",
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.purpleAccent,
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                  ),
                 ),
               ],
             ),
