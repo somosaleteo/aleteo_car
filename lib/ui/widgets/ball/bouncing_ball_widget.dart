@@ -9,25 +9,25 @@ class BouncingBallAnimation extends StatefulWidget {
 
 class BouncingBallAnimationState extends State<BouncingBallAnimation>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-  double ballSize = 50.0;
-  double ballPositionX = 0.0; // Asigna un valor inicial
-  double ballPositionY = 0.0; // Asigna un valor inicial
-  double ballVelocityX = 2.0;
-  double ballVelocityY = 2.0;
+  late AnimationController animatedController;
+  late Animation<double> ballAnimation;
   late double containerWidth;
   late double containerHeight;
+  double ballSize = 50.0;
+  double ballPositionX = 0.0;
+  double ballPositionY = 0.0;
+  double ballVelocityX = 2.0;
+  double ballVelocityY = 2.0;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
+    animatedController = AnimationController(
       duration: const Duration(minutes: 1),
       vsync: this,
     )..repeat();
 
-    _animation = Tween<double>(begin: 0, end: 1).animate(_controller)
+    ballAnimation = Tween<double>(begin: 0, end: 1).animate(animatedController)
       ..addListener(() {
         updateBallPosition();
       });
@@ -35,7 +35,7 @@ class BouncingBallAnimationState extends State<BouncingBallAnimation>
 
   @override
   void dispose() {
-    _controller.dispose();
+    animatedController.dispose();
     super.dispose();
   }
 

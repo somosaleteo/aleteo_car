@@ -101,7 +101,7 @@ class MyHomePage extends StatelessWidget {
                 MyNavigatorButtonWidget(
                   page: const LandScapeAnimationPage(),
                   size: size,
-                  label: "Animaciones",
+                  label: "Paisaje Animado",
                   child: const SizedBox(child: Icon(Icons.landscape_rounded)),
                 ),
                 const _SeparatorWidget(),
@@ -117,7 +117,7 @@ class MyHomePage extends StatelessWidget {
                   size: size,
                   label: "Rebote",
                   child:
-                      const SizedBox(child: Icon(Icons.sports_soccer_outlined)),
+                      const SizedBox(child: Icon(Icons.flutter_dash_outlined)),
                 ),
                 const _SeparatorWidget(),
                 MyNavigatorButtonWidget(

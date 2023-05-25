@@ -10,24 +10,62 @@ class AnimatedBall extends StatefulWidget {
 class _AnimatedBallState extends State<AnimatedBall>
     with SingleTickerProviderStateMixin {
   late AnimationController animatedController;
-  late Animation<Offset> animatedBall;
+  late TweenSequence<Offset> animationBall;
 
   @override
   void initState() {
     super.initState();
+
     animatedController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
-    );
-    //Animated Ball KeyFrame 1
-    animatedBall = Tween<Offset>(
-      begin: const Offset(0, 0),
-      end: const Offset(2, 1),
-    ).animate(animatedController)
-      ..addListener(() {
-        setState(() {});
-      });
-    animatedController.repeat(reverse: false);
+      duration: const Duration(seconds: 3),
+    )..repeat();
+
+    animationBall = TweenSequence<Offset>([
+      TweenSequenceItem(
+          tween: Tween(
+            begin: Offset.zero,
+            end: const Offset(0.1, 0.25),
+          ),
+          weight: 2.5),
+      TweenSequenceItem(
+          tween: Tween(
+            begin: const Offset(0.1, 0.25),
+            end: const Offset(0.201, 0.49),
+          ),
+          weight: 2.5),
+      TweenSequenceItem(
+          tween: Tween(
+            begin: const Offset(0.201, 0.49),
+            end: const Offset(0.3, 0.75),
+          ),
+          weight: 2.5),
+      TweenSequenceItem(
+          tween: Tween(
+            begin: const Offset(0.3, 0.75),
+            end: const Offset(0.44, 0.515),
+          ),
+          weight: 3.75),
+      TweenSequenceItem(
+          tween: Tween(
+            begin: const Offset(0.44, 0.515),
+            end: const Offset(0.55, 0.35),
+          ),
+          weight: 4.25),
+      TweenSequenceItem(
+          tween: Tween(
+            begin: const Offset(0.55, 0.35),
+            end: const Offset(0.68, 0.53),
+          ),
+          weight: 5.5),
+      TweenSequenceItem(
+          tween: Tween(
+            begin: const Offset(0.68, 0.53),
+            end: const Offset(0.79, 0.715),
+          ),
+          weight: 5.0),
+    ]);
+
     animatedController.addListener(() {
       setState(() {});
     });
@@ -55,7 +93,7 @@ class _AnimatedBallState extends State<AnimatedBall>
           width: 400,
           height: 280,
           child: SlideTransition(
-            position: animatedBall,
+            position: animatedController.drive(animationBall),
             child: CustomPaint(
               painter: _AnimatedBallPainter(),
             ),
@@ -72,36 +110,10 @@ class _AnimatedBallPainter extends CustomPainter {
     final paint = Paint()
       ..color = Colors.black
       ..strokeWidth = 2
-      ..style = PaintingStyle.stroke;
+      ..style = PaintingStyle.fill;
 
     canvas.drawCircle(
         Offset(size.width / 9, size.height / 9), size.width / 18, paint);
-
-    final paintKeyFrames = Paint()
-      ..color = Colors.grey.shade400
-      ..strokeWidth = 2
-      ..style = PaintingStyle.stroke;
-
-    canvas.drawCircle(Offset(size.width / 4.8, size.height / 2.8),
-        size.width / 18, paintKeyFrames);
-
-    canvas.drawCircle(Offset(size.width / 3.3, size.height / 1.7),
-        size.width / 18, paintKeyFrames);
-
-    canvas.drawCircle(Offset(size.width / 2.5, size.height / 1.2),
-        size.width / 18, paintKeyFrames);
-
-    canvas.drawCircle(Offset(size.width / 1.85, size.height / 1.57),
-        size.width / 18, paintKeyFrames);
-
-    canvas.drawCircle(Offset(size.width / 1.5, size.height / 2.3),
-        size.width / 18, paintKeyFrames);
-
-    canvas.drawCircle(Offset(size.width / 1.27, size.height / 1.64),
-        size.width / 18, paintKeyFrames);
-
-    canvas.drawCircle(Offset(size.width / 1.12, size.height / 1.25),
-        size.width / 18, paintKeyFrames);
   }
 
   @override
