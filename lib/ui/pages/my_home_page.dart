@@ -97,16 +97,34 @@ class MyHomePage extends StatelessWidget {
                     showLayoutColors: false,
                   ),
                 ),
-                 MyNavigatorButtonWidget(
+                MyNavigatorButtonWidget(
                   page: const SinAnimationPage(),
                   size: size,
                   label: "¡Animemos un circulo!",
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.purpleAccent,
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                  ),
+                  child: const SizedBox(
+                      child: Icon(Icons.accessible_forward_sharp)),
+                ),
+                const _SeparatorWidget(),
+                MyNavigatorButtonWidget(
+                  page: const LandScapeAnimationPage(),
+                  size: size,
+                  label: "Paisaje Animado",
+                  child: const SizedBox(child: Icon(Icons.landscape_rounded)),
+                ),
+                const _SeparatorWidget(),
+                MyNavigatorButtonWidget(
+                  page: const AnimatedCubePage(),
+                  size: size,
+                  label: "Cubito",
+                  child: const SizedBox(child: Icon(Icons.view_in_ar_outlined)),
+                ),
+                const _SeparatorWidget(),
+                MyNavigatorButtonWidget(
+                  page: const AnimatedBallPage(),
+                  size: size,
+                  label: "Pelota animada",
+                  child:
+                      const SizedBox(child: Icon(Icons.sports_soccer_outlined)),
                 ),
               ],
             ),
