@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/ball/animated_ball_keyframes.widget.dart';
 import '../widgets/ball/animated_ball_widget.dart';
 
 class AnimatedBallPage extends StatelessWidget {
@@ -13,7 +12,7 @@ class AnimatedBallPage extends StatelessWidget {
         title: const Text('Pelota animada'),
       ),
       body: const Stack(children: [
-        AnimatedBallKeyframesWidget(),
+        // AnimatedBallKeyframesWidget(),
         AnimatedBall(),
       ]),
     );

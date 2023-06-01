@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 
 class AnimatedBall extends StatefulWidget {
   const AnimatedBall({super.key});
@@ -8,62 +9,84 @@ class AnimatedBall extends StatefulWidget {
 }
 
 class _AnimatedBallState extends State<AnimatedBall>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late AnimationController animatedController;
   late TweenSequence<Offset> animationBall;
+
+  late AnimationController circleController;
 
   @override
   void initState() {
     super.initState();
 
+    circleController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    )..repeat();
+
     animatedController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
     )..repeat();
 
     animationBall = TweenSequence<Offset>([
+      //First fall
+      TweenSequenceItem(
+        tween: Tween(
+          begin: const Offset(-0.4, -0.5),
+          end: const Offset(-0.28, 0.4),
+        ),
+        weight: 1.5,
+      ),
+      //First upwards bounce
       TweenSequenceItem(
           tween: Tween(
-            begin: Offset.zero,
-            end: const Offset(0.1, 0.25),
+            begin: const Offset(-0.28, 0.4),
+            end: const Offset(-0.2, 0),
           ),
-          weight: 2.5),
+          weight: 0.7),
+      // Entry first upwards curve
       TweenSequenceItem(
           tween: Tween(
-            begin: const Offset(0.1, 0.25),
-            end: const Offset(0.201, 0.49),
+            begin: const Offset(-0.2, 0),
+            end: const Offset(-0.13, -0.2),
           ),
-          weight: 2.5),
+          weight: 0.65),
+      //Upper upwards curve
       TweenSequenceItem(
           tween: Tween(
-            begin: const Offset(0.201, 0.49),
-            end: const Offset(0.3, 0.75),
+            begin: const Offset(-0.13, -0.2),
+            end: const Offset(-0.05, -0.27),
           ),
-          weight: 2.5),
+          weight: 0.55),
+      //Upper downwards curve
       TweenSequenceItem(
           tween: Tween(
-            begin: const Offset(0.3, 0.75),
-            end: const Offset(0.44, 0.515),
+            begin: const Offset(-0.05, -0.27),
+            end: const Offset(0.03, -0.2),
           ),
-          weight: 3.75),
+          weight: 0.55),
+      // Entry first upwards curve
       TweenSequenceItem(
           tween: Tween(
-            begin: const Offset(0.44, 0.515),
-            end: const Offset(0.55, 0.35),
+            begin: const Offset(0.03, -0.2),
+            end: const Offset(0.1, 0),
           ),
-          weight: 4.25),
+          weight: 0.65),
+      //Second fall to floor
       TweenSequenceItem(
           tween: Tween(
-            begin: const Offset(0.55, 0.35),
-            end: const Offset(0.68, 0.53),
+            begin: const Offset(0.1, 0),
+            end: const Offset(0.2, 0.4),
           ),
-          weight: 5.5),
+          weight: 0.63),
+      //Last updwards bounce
       TweenSequenceItem(
           tween: Tween(
-            begin: const Offset(0.68, 0.53),
-            end: const Offset(0.79, 0.715),
+            begin: const Offset(0.2, 0.4),
+            end: const Offset(0.3, 0.1),
           ),
-          weight: 5.0),
+          weight: 0.7),
     ]);
 
     animatedController.addListener(() {
@@ -73,6 +96,7 @@ class _AnimatedBallState extends State<AnimatedBall>
 
   @override
   void dispose() {
+    circleController.dispose();
     animatedController.dispose();
     super.dispose();
   }
@@ -89,16 +113,33 @@ class _AnimatedBallState extends State<AnimatedBall>
           ),
         ),
         child: Container(
-          padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+          margin: const EdgeInsets.fromLTRB(0, 40, 0, 0),
           width: 400,
-          height: 280,
+          height: 390,
           child: SlideTransition(
             position: animatedController.drive(animationBall),
-            child: CustomPaint(
-              painter: _AnimatedBallPainter(),
+            child: RotatingCircleTry(
+              controller: circleController,
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class RotatingCircleTry extends AnimatedWidget {
+  const RotatingCircleTry({super.key, required AnimationController controller})
+      : super(listenable: controller);
+
+  Animation<double> get _progress => listenable as Animation<double>;
+
+  @override
+  Widget build(BuildContext context) {
+    return Transform.rotate(
+      angle: _progress.value * 9 * math.pi,
+      child: CustomPaint(
+        painter: _AnimatedBallPainter(),
       ),
     );
   }
@@ -108,14 +149,31 @@ class _AnimatedBallPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.black
+      ..color = const Color(0xFFee6730)
       ..strokeWidth = 2
       ..style = PaintingStyle.fill;
 
     canvas.drawCircle(
-        Offset(size.width / 9, size.height / 9), size.width / 18, paint);
+        Offset(size.width / 2, size.height / 2), size.width / 15, paint);
+
+    final blackPaint = Paint()
+      ..color = Colors.black
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.0;
+
+    final path = Path();
+    path.moveTo(size.width / 2, size.height / 2.3);
+    path.lineTo(size.width / 2, size.height / 1.77);
+
+    canvas.drawPath(path, blackPaint);
+
+    path.reset();
+    path.moveTo(size.width / 2.3, size.height / 2);
+    path.lineTo(size.width / 1.77, size.height / 2);
+
+    canvas.drawPath(path, blackPaint);
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
