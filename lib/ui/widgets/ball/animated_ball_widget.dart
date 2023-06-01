@@ -11,10 +11,13 @@ class AnimatedBall extends StatefulWidget {
 class _AnimatedBallState extends State<AnimatedBall>
     with TickerProviderStateMixin {
   late AnimationController animatedController;
+  late AnimationController circleController;
+
   late Animation<double> ballAnimator;
   late TweenSequence<Offset> animationBall;
 
-  late AnimationController circleController;
+  ///
+  late Animation<double> scaleAnimator;
 
   @override
   void initState() {
@@ -30,6 +33,51 @@ class _AnimatedBallState extends State<AnimatedBall>
       duration: const Duration(seconds: 4),
     )..repeat();
 
+// ////
+    scaleAnimator = TweenSequence<double>([
+      TweenSequenceItem(
+        tween: Tween<double>(
+          begin: 1.0, // tamaño inicial
+          end: 0.9, // tamaño achatado
+        ),
+        weight: 1,
+      ),
+      TweenSequenceItem(
+        tween: Tween<double>(
+          begin: 0.9, // tamaño achatado
+          end: 1.0, // tamaño original
+        ),
+        weight: 1,
+      ),
+      TweenSequenceItem(
+        tween: Tween<double>(
+          begin: 1.0, // tamaño achatado
+          end: 1.0, // tamaño original
+        ),
+        weight: 7,
+      ),
+      TweenSequenceItem(
+        tween: Tween<double>(
+          begin: 1.0, // tamaño achatado
+          end: 0.9, // tamaño original
+        ),
+        weight: 1,
+      ),
+      TweenSequenceItem(
+        tween: Tween<double>(
+          begin: 0.9, // tamaño achatado
+          end: 1.0, // tamaño original
+        ),
+        weight: 1,
+      ),
+    ]).animate(
+      CurvedAnimation(
+        parent: animatedController,
+        curve: Curves.easeInOut,
+      ),
+    );
+
+// ///
     ballAnimator = Tween<double>(
       begin: 0,
       end: 2,
@@ -129,9 +177,9 @@ class _AnimatedBallState extends State<AnimatedBall>
         child: SlideTransition(
           position: animatedController.drive(animationBall),
           child: Transform.rotate(
-            angle: ballAnimator.value * 3 * math.pi,
+            angle: 2 * math.pi,
             child: CustomPaint(
-              painter: _AnimatedBallPainter(),
+              painter: _AnimatedBallPainter(scaleAnimator.value),
             ),
             //  RotatingCircle(
             //   controller: circleController,
@@ -144,6 +192,10 @@ class _AnimatedBallState extends State<AnimatedBall>
 }
 
 class _AnimatedBallPainter extends CustomPainter {
+  final double scale;
+
+  _AnimatedBallPainter(this.scale);
+
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
@@ -151,25 +203,20 @@ class _AnimatedBallPainter extends CustomPainter {
       ..strokeWidth = 2
       ..style = PaintingStyle.fill;
 
-    canvas.drawCircle(
-        Offset(size.width / 2, size.height / 2), size.width / 15, paint);
+    var center = Offset(size.width / 2, size.height / 2);
+    var radius = size.width / 15;
+    var rect = Rect.fromCircle(center: center, radius: radius);
 
-    final blackPaint = Paint()
-      ..color = Colors.black
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 2.0;
+    canvas.drawOval(
+        Rect.fromLTRB(
+          rect.left,
+          rect.top,
+          rect.right,
+          rect.bottom * scale,
+        ),
+        paint);
 
-    final path = Path();
-    path.moveTo(size.width / 2, size.height / 2.3);
-    path.lineTo(size.width / 2, size.height / 1.77);
-
-    canvas.drawPath(path, blackPaint);
-
-    path.reset();
-    path.moveTo(size.width / 2.3, size.height / 2);
-    path.lineTo(size.width / 1.77, size.height / 2);
-
-    canvas.drawPath(path, blackPaint);
+    // ...
   }
 
   @override
