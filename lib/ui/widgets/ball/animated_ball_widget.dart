@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math' as math;
 
 class AnimatedBall extends StatefulWidget {
   const AnimatedBall({super.key});
@@ -12,10 +11,8 @@ class _AnimatedBallState extends State<AnimatedBall>
     with TickerProviderStateMixin {
   late AnimationController animatedController;
 
-  late Animation<double> ballAnimator;
   late TweenSequence<Offset> animationBall;
 
-  ///
   late Animation<double> scaleAnimator;
 
   @override
@@ -27,8 +24,14 @@ class _AnimatedBallState extends State<AnimatedBall>
       duration: const Duration(seconds: 4),
     )..repeat();
 
-// ////
     scaleAnimator = TweenSequence<double>([
+      TweenSequenceItem(
+        tween: Tween<double>(
+          begin: 1.0, // tamaño achatado
+          end: 1.0, // tamaño original
+        ),
+        weight: 0.5,
+      ),
       TweenSequenceItem(
         tween: Tween<double>(
           begin: 1.0, // tamaño inicial
@@ -71,22 +74,12 @@ class _AnimatedBallState extends State<AnimatedBall>
       ),
     );
 
-// ///
-    ballAnimator = Tween<double>(
-      begin: 0,
-      end: 2,
-    ).animate(
-      CurvedAnimation(
-        parent: animatedController,
-        curve: const Interval(0.1, 1, curve: Curves.decelerate),
-      ),
-    );
     animationBall = TweenSequence<Offset>([
       //First fall
       TweenSequenceItem(
         tween: Tween(
           begin: const Offset(-0.4, -0.5),
-          end: const Offset(-0.28, 0.48),
+          end: const Offset(-0.28, 0.478),
         ),
         weight: 1,
       ),
@@ -129,7 +122,7 @@ class _AnimatedBallState extends State<AnimatedBall>
       TweenSequenceItem(
           tween: Tween(
             begin: const Offset(0.1, 0),
-            end: const Offset(0.2, 0.48),
+            end: const Offset(0.2, 0.478),
           ),
           weight: 1),
       //Last updwards bounce
@@ -169,14 +162,8 @@ class _AnimatedBallState extends State<AnimatedBall>
         height: 380,
         child: SlideTransition(
           position: animatedController.drive(animationBall),
-          child: Transform.rotate(
-            angle: 2 * math.pi,
-            child: CustomPaint(
-              painter: _AnimatedBallPainter(scaleAnimator.value),
-            ),
-            //  RotatingCircle(
-            //   controller: circleController,
-            // ),
+          child: CustomPaint(
+            painter: _AnimatedBallPainter(scaleAnimator.value),
           ),
         ),
       ),
@@ -208,8 +195,6 @@ class _AnimatedBallPainter extends CustomPainter {
           rect.bottom * scale,
         ),
         paint);
-
-    // ...
   }
 
   @override
