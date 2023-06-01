@@ -11,6 +11,7 @@ class AnimatedBall extends StatefulWidget {
 class _AnimatedBallState extends State<AnimatedBall>
     with TickerProviderStateMixin {
   late AnimationController animatedController;
+  late Animation<double> ballAnimator;
   late TweenSequence<Offset> animationBall;
 
   late AnimationController circleController;
@@ -21,14 +22,23 @@ class _AnimatedBallState extends State<AnimatedBall>
 
     circleController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
+      duration: const Duration(seconds: 10),
     )..repeat();
 
     animatedController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: const Duration(seconds: 4),
     )..repeat();
 
+    ballAnimator = Tween<double>(
+      begin: 0,
+      end: 2,
+    ).animate(
+      CurvedAnimation(
+        parent: animatedController,
+        curve: const Interval(0, 1, curve: Curves.decelerate),
+      ),
+    );
     animationBall = TweenSequence<Offset>([
       //First fall
       TweenSequenceItem(
@@ -66,7 +76,7 @@ class _AnimatedBallState extends State<AnimatedBall>
             end: const Offset(0.03, -0.2),
           ),
           weight: 1),
-      // Entry first upwards curve
+      // Exit first upwards curve
       TweenSequenceItem(
           tween: Tween(
             begin: const Offset(0.03, -0.2),
@@ -104,32 +114,37 @@ class _AnimatedBallState extends State<AnimatedBall>
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: DecoratedBox(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.red.shade100,
-            style: BorderStyle.solid,
-            width: 10.0,
-          ),
+        child: DecoratedBox(
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.red.shade100,
+          style: BorderStyle.solid,
+          width: 10.0,
         ),
-        child: Container(
-          margin: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-          width: 400,
-          height: 390,
-          child: SlideTransition(
-            position: animatedController.drive(animationBall),
-            child: RotatingCircleTry(
-              controller: circleController,
+      ),
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(0, 40, 0, 0),
+        width: 400,
+        height: 390,
+        child: SlideTransition(
+          position: animatedController.drive(animationBall),
+          child: Transform.rotate(
+            angle: ballAnimator.value * 3 * math.pi,
+            child: CustomPaint(
+              painter: _AnimatedBallPainter(),
             ),
+            //  RotatingCircle(
+            //   controller: circleController,
+            // ),
           ),
         ),
       ),
-    );
+    ));
   }
 }
 
-class RotatingCircleTry extends AnimatedWidget {
-  const RotatingCircleTry({super.key, required AnimationController controller})
+class RotatingCircle extends AnimatedWidget {
+  const RotatingCircle({super.key, required AnimationController controller})
       : super(listenable: controller);
 
   Animation<double> get _progress => listenable as Animation<double>;

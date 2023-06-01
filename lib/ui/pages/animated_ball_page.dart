@@ -12,7 +12,6 @@ class AnimatedBallPage extends StatelessWidget {
         title: const Text('Pelota animada'),
       ),
       body: const Stack(children: [
-        // AnimatedBallKeyframesWidget(),
         AnimatedBall(),
       ]),
     );
