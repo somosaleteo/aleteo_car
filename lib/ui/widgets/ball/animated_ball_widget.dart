@@ -11,7 +11,6 @@ class AnimatedBall extends StatefulWidget {
 class _AnimatedBallState extends State<AnimatedBall>
     with TickerProviderStateMixin {
   late AnimationController animatedController;
-  late AnimationController circleController;
 
   late Animation<double> ballAnimator;
   late TweenSequence<Offset> animationBall;
@@ -22,11 +21,6 @@ class _AnimatedBallState extends State<AnimatedBall>
   @override
   void initState() {
     super.initState();
-
-    circleController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    )..repeat();
 
     animatedController = AnimationController(
       vsync: this,
@@ -54,7 +48,7 @@ class _AnimatedBallState extends State<AnimatedBall>
           begin: 1.0, // tamaño achatado
           end: 1.0, // tamaño original
         ),
-        weight: 7,
+        weight: 30,
       ),
       TweenSequenceItem(
         tween: Tween<double>(
@@ -92,7 +86,7 @@ class _AnimatedBallState extends State<AnimatedBall>
       TweenSequenceItem(
         tween: Tween(
           begin: const Offset(-0.4, -0.5),
-          end: const Offset(-0.28, 0.4),
+          end: const Offset(-0.28, 0.48),
         ),
         weight: 1,
       ),
@@ -135,7 +129,7 @@ class _AnimatedBallState extends State<AnimatedBall>
       TweenSequenceItem(
           tween: Tween(
             begin: const Offset(0.1, 0),
-            end: const Offset(0.2, 0.4),
+            end: const Offset(0.2, 0.48),
           ),
           weight: 1),
       //Last updwards bounce
@@ -154,7 +148,6 @@ class _AnimatedBallState extends State<AnimatedBall>
 
   @override
   void dispose() {
-    circleController.dispose();
     animatedController.dispose();
     super.dispose();
   }
@@ -173,7 +166,7 @@ class _AnimatedBallState extends State<AnimatedBall>
       child: Container(
         margin: const EdgeInsets.fromLTRB(0, 40, 0, 0),
         width: 400,
-        height: 390,
+        height: 380,
         child: SlideTransition(
           position: animatedController.drive(animationBall),
           child: Transform.rotate(
