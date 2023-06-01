@@ -36,7 +36,7 @@ class _AnimatedBallState extends State<AnimatedBall>
           begin: const Offset(-0.4, -0.5),
           end: const Offset(-0.28, 0.4),
         ),
-        weight: 1.5,
+        weight: 1,
       ),
       //First upwards bounce
       TweenSequenceItem(
@@ -44,49 +44,49 @@ class _AnimatedBallState extends State<AnimatedBall>
             begin: const Offset(-0.28, 0.4),
             end: const Offset(-0.2, 0),
           ),
-          weight: 0.7),
+          weight: 1),
       // Entry first upwards curve
       TweenSequenceItem(
           tween: Tween(
             begin: const Offset(-0.2, 0),
             end: const Offset(-0.13, -0.2),
           ),
-          weight: 0.65),
+          weight: 1),
       //Upper upwards curve
       TweenSequenceItem(
           tween: Tween(
             begin: const Offset(-0.13, -0.2),
             end: const Offset(-0.05, -0.27),
           ),
-          weight: 0.55),
+          weight: 1),
       //Upper downwards curve
       TweenSequenceItem(
           tween: Tween(
             begin: const Offset(-0.05, -0.27),
             end: const Offset(0.03, -0.2),
           ),
-          weight: 0.55),
+          weight: 1),
       // Entry first upwards curve
       TweenSequenceItem(
           tween: Tween(
             begin: const Offset(0.03, -0.2),
             end: const Offset(0.1, 0),
           ),
-          weight: 0.65),
+          weight: 1),
       //Second fall to floor
       TweenSequenceItem(
           tween: Tween(
             begin: const Offset(0.1, 0),
             end: const Offset(0.2, 0.4),
           ),
-          weight: 0.63),
+          weight: 1),
       //Last updwards bounce
       TweenSequenceItem(
           tween: Tween(
             begin: const Offset(0.2, 0.4),
             end: const Offset(0.3, 0.1),
           ),
-          weight: 0.7),
+          weight: 1),
     ]);
 
     animatedController.addListener(() {
