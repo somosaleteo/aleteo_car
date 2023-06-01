@@ -22,7 +22,7 @@ class _AnimatedBallState extends State<AnimatedBall>
 
     circleController = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 10),
+      duration: const Duration(seconds: 1),
     )..repeat();
 
     animatedController = AnimationController(
@@ -36,7 +36,7 @@ class _AnimatedBallState extends State<AnimatedBall>
     ).animate(
       CurvedAnimation(
         parent: animatedController,
-        curve: const Interval(0, 1, curve: Curves.decelerate),
+        curve: const Interval(0.1, 1, curve: Curves.decelerate),
       ),
     );
     animationBall = TweenSequence<Offset>([
@@ -94,7 +94,7 @@ class _AnimatedBallState extends State<AnimatedBall>
       TweenSequenceItem(
           tween: Tween(
             begin: const Offset(0.2, 0.4),
-            end: const Offset(0.3, 0.1),
+            end: const Offset(0.26, 0.1),
           ),
           weight: 1),
     ]);
@@ -140,23 +140,6 @@ class _AnimatedBallState extends State<AnimatedBall>
         ),
       ),
     ));
-  }
-}
-
-class RotatingCircle extends AnimatedWidget {
-  const RotatingCircle({super.key, required AnimationController controller})
-      : super(listenable: controller);
-
-  Animation<double> get _progress => listenable as Animation<double>;
-
-  @override
-  Widget build(BuildContext context) {
-    return Transform.rotate(
-      angle: _progress.value * 9 * math.pi,
-      child: CustomPaint(
-        painter: _AnimatedBallPainter(),
-      ),
-    );
   }
 }
 
