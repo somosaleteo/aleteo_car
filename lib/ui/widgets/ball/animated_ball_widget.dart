@@ -163,7 +163,7 @@ class _AnimatedBallState extends State<AnimatedBall>
         child: SlideTransition(
           position: animatedController.drive(animationBall),
           child: CustomPaint(
-            painter: _AnimatedBallPainter(scaleAnimator.value),
+            painter: AnimatedBallPainter(scaleAnimator.value),
           ),
         ),
       ),
@@ -171,10 +171,10 @@ class _AnimatedBallState extends State<AnimatedBall>
   }
 }
 
-class _AnimatedBallPainter extends CustomPainter {
+class AnimatedBallPainter extends CustomPainter {
   final double scale;
 
-  _AnimatedBallPainter(this.scale);
+  AnimatedBallPainter(this.scale);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -198,5 +198,5 @@ class _AnimatedBallPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

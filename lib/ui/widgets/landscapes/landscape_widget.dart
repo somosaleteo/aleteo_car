@@ -136,11 +136,11 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
 
   @override
   Widget build(BuildContext context) {
-    final Color landscapeColor = landscapeColorTweenAnimation.value!;
 
     final tmp = dpFromSize(MediaQuery.of(context).size, 380, true);
     final Size size = Size(tmp * 1.25, tmp);
 
+    final Color landscapeColor = landscapeColorTweenAnimation.value!;
     final double sunSize = sizeAnimation.value;
 
     return Scaffold(
