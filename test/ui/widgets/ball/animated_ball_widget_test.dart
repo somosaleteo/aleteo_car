@@ -24,7 +24,10 @@ void main() {
         ),
       ),
     );
-    expect(find.byType(AnimatedBallPainter), findsOneWidget);
+    expect(
+        find.byWidgetPredicate((widget) =>
+            widget is CustomPaint && widget.painter is AnimatedBallPainter),
+        findsOneWidget);
   });
 
   // Prueba para verificar si el AnimatedBall se deshace correctamente
