@@ -5,34 +5,29 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Test CirclePainter', (tester) async {
-    // await tester.pumpWidget(MaterialApp(
-    //   home: CustomPaint(
-    //     painter: CirclePainter(),
-    //   ),
-    // ));
+    final CustomPainter newCircle = CirclePainter();
+    final CustomPainter oldCircle = CirclePainter();
 
-    // final rendered = tester.renderObject(find.byWidgetPredicate(
-    //     (widget) => widget is CustomPaint && widget.painter is CirclePainter));
-
-    // final canvas = RenderCustomPaint();
-
-    // final recorder = PictureRecorder();
-    // final canvasForTesting = Canvas(recorder);
-
-    // canvas.painter?.paint(canvasForTesting, const Size(100, 100));
-
-    // final picture = recorder.endRecording();
-    // final image = await picture.toImage(100, 100);
-
-    // final byteData = await image.toByteData(format: ImageByteFormat.png);
-    // final pngBytes = byteData!.buffer.asUint8List();
-
-    // final pixelColor = pngBytes[0];
-    // expect(pixelColor, 0);
+    expect(newCircle.shouldRepaint(oldCircle), false);
   });
-  testWidgets('Test RectanglePainter', (tester) async {});
-  testWidgets('Test TrianglePainter', (tester) async {});
-  testWidgets('Test LinePainter', (tester) async {});
+  testWidgets('Test RectanglePainter', (tester) async {
+    final CustomPainter newRectangle = RectanglePainter();
+    final CustomPainter oldRectangle = RectanglePainter();
+
+    expect(newRectangle.shouldRepaint(oldRectangle), false);
+  });
+  testWidgets('Test TrianglePainter', (tester) async {
+    final CustomPainter newTriangle = TrianglePainter();
+    final CustomPainter oldTriangle = TrianglePainter();
+
+    expect(newTriangle.shouldRepaint(oldTriangle), false);
+  });
+  testWidgets('Test LinePainter', (tester) async {
+    final CustomPainter newLine = LinePainter();
+    final CustomPainter oldLine = LinePainter();
+
+    expect(newLine.shouldRepaint(oldLine), false);
+  });
 
   testWidgets('Test BasicGeometricShapesPage', (tester) async {
     await tester.pumpWidget(const MaterialApp(

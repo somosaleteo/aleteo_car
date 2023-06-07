@@ -5,7 +5,7 @@ import '../widgets/cars/car_types/car_custom_painter_fiat_widget.dart';
 import '../widgets/my_custom_scaffold_widget.dart';
 
 class MyCarCustomPainterPage extends StatelessWidget {
-  const MyCarCustomPainterPage({Key? key}) : super(key: key);
+  const MyCarCustomPainterPage({super.key});
 
   @override
   Widget build(BuildContext context) {

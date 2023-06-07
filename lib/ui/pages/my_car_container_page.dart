@@ -5,7 +5,7 @@ import '../widgets/cars/car_main_container_widget.dart';
 import '../widgets/my_custom_scaffold_widget.dart';
 
 class MyCarContainerPage extends StatelessWidget {
-  const MyCarContainerPage({Key? key}) : super(key: key);
+  const MyCarContainerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
