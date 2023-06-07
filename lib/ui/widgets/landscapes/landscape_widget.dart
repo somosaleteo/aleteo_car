@@ -149,104 +149,109 @@ class _LandscapeWidgetState extends State<LandscapeWidget>
         backgroundColor: Colors.transparent,
         title: const Text('¿Y si viajamos?'),
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 100,
-            child: Transform.rotate(
-              angle: sunRotateAnimation.value,
-              child: CustomPaint(
-                painter: SunEffectPainter(
-                    screenWidth: MediaQuery.of(context).size.width,
-                    sunRayColor: sunRaysColorTweenAnimation.value!),
-                child: Container(
-                  width: sunSize,
-                  height: sunSize,
-                  decoration: BoxDecoration(
-                    color: sunColorTweenAnimation.value,
-                    shape: BoxShape.circle,
+      body: Flex(direction: Axis.vertical, children: [
+        Expanded(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 100,
+                child: Transform.rotate(
+                  angle: sunRotateAnimation.value,
+                  child: CustomPaint(
+                    painter: SunEffectPainter(
+                        screenWidth: MediaQuery.of(context).size.width,
+                        sunRayColor: sunRaysColorTweenAnimation.value!),
+                    child: Container(
+                      width: sunSize,
+                      height: sunSize,
+                      decoration: BoxDecoration(
+                        color: sunColorTweenAnimation.value,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          SingleChildScrollView(
-            physics: const NeverScrollableScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            child: SlideTransition(
-              position: cloudsTranslation,
-              child: const SizedBox(
-                width: 500,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    CloudsWidget(),
-                    CloudsWidget(),
-                    CloudsWidget(),
-                  ],
-                ),
+              const SizedBox(
+                height: 50,
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 130,
-          ),
-          Stack(
-            children: [
               SingleChildScrollView(
                 physics: const NeverScrollableScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: SlideTransition(
-                  position: objectsTranslation,
-                  child: const Row(
-                    //mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    //mainAxisSize: MainAxisSize.max,
-                    children: [
-                      TreeWidget(),
-                      SizedBox(
-                        width: 80,
-                      ),
-                      BuildingWidget(
-                        height: 300,
-                        width: 200,
-                      ),
-                      SizedBox(
-                        width: 70,
-                      ),
-                      TreeWidget(),
-                      SizedBox(
-                        width: 70,
-                      ),
-                      HouseWidget(),
-                      SizedBox(
-                        width: 80,
-                      ),
-                      TreeWidget(),
-                      SizedBox(
-                        width: 80,
-                      )
-                    ],
+                  position: cloudsTranslation,
+                  child: const SizedBox(
+                    width: 500,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        CloudsWidget(),
+                        CloudsWidget(),
+                        CloudsWidget(),
+                      ],
+                    ),
                   ),
                 ),
               ),
-              SlideTransition(
-                position: carTranslation,
-                child: CarCustomPainterFiatWidget(
-                  size: size,
-                  showLayoutColors: false,
+              const SizedBox(
+                height: 130,
+              ),
+              Expanded(
+                child: Stack(
+                  key: const Key('landscapeElementsStack'),
+                  children: [
+                    SingleChildScrollView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      child: SlideTransition(
+                        position: objectsTranslation,
+                        child: const Row(
+                          //mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          //mainAxisSize: MainAxisSize.max,
+                          children: [
+                            TreeWidget(),
+                            SizedBox(
+                              width: 80,
+                            ),
+                            BuildingWidget(
+                              height: 300,
+                              width: 200,
+                            ),
+                            SizedBox(
+                              width: 70,
+                            ),
+                            TreeWidget(),
+                            SizedBox(
+                              width: 70,
+                            ),
+                            HouseWidget(),
+                            SizedBox(
+                              width: 80,
+                            ),
+                            TreeWidget(),
+                            SizedBox(
+                              width: 80,
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    SlideTransition(
+                      position: carTranslation,
+                      child: CarCustomPainterFiatWidget(
+                        size: size,
+                        showLayoutColors: false,
+                      ),
+                    ),
+                  ],
                 ),
               ),
+              const SizedBox(height: 135, child: StreetWidget()),
             ],
           ),
-          const Expanded(
-            child: StreetWidget(),
-          ),
-        ],
-      ),
+        ),
+      ]),
     );
   }
 }

@@ -32,7 +32,7 @@ void main() {
   testWidgets('LandscapeWidget contains a Stack', (WidgetTester tester) async {
     await tester.pumpWidget(const MaterialApp(home: LandscapeWidget()));
 
-    expect(find.byType(Stack), findsOneWidget);
+    expect(find.byKey(const Key('landscapeElementsStack')), findsOneWidget);
   });
 
   testWidgets('LandscapeWidget contains a StreetWidget',
