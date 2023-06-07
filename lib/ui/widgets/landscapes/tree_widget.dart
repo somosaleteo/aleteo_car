@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class TreeWidget extends StatelessWidget {
   const TreeWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
