@@ -12,15 +12,15 @@ class CloudsWidget extends StatelessWidget {
       width: 120,
       child: ClipRect(
         child: CustomPaint(
-          painter: _CloudsPainter(color: color ?? Colors.white),
+          painter: CloudsPainter(color: color ?? Colors.white),
         ),
       ),
     );
   }
 }
 
-class _CloudsPainter extends CustomPainter {
-  _CloudsPainter({required this.color});
+class CloudsPainter extends CustomPainter {
+  const CloudsPainter({required this.color});
 
   final Color color;
 

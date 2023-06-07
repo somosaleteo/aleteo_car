@@ -12,14 +12,14 @@ class HouseWidget extends StatelessWidget {
       width: 150,
       child: ClipRRect(
         child: CustomPaint(
-          painter: _HousePainter(),
+          painter: HousePainter(),
         ),
       ),
     );
   }
 }
 
-class _HousePainter extends CustomPainter {
+class HousePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
