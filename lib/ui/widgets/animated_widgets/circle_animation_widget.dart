@@ -15,31 +15,31 @@ class CircleAnimationWidget extends StatefulWidget {
 
 class CircleAnimationWidgetState extends State<CircleAnimationWidget>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _circleAnimation;
-  late Animation<double> _sinAnimation;
+  late AnimationController controller;
+  late Animation<double> circleAnimation;
+  late Animation<double> sinAnimation;
 
   @override
   void initState() {
     super.initState();
     const duration = Duration(seconds: 4);
 
-    _controller = AnimationController(
+    controller = AnimationController(
       vsync: this,
       duration: duration,
     )..repeat(reverse: false);
 
-    _circleAnimation = Tween(
+    circleAnimation = Tween(
       begin: -pi / 2,
       end: 3 * pi / 2,
-    ).animate(_controller);
+    ).animate(controller);
 
-    _sinAnimation = Tween(
+    sinAnimation = Tween(
       begin: -1.0,
       end: 1.0,
-    ).animate(_controller);
+    ).animate(controller);
 
-    _controller.addListener(() {
+    controller.addListener(() {
       if (generalAnimationController.isPlaying) {
         setState(() {});
       }
@@ -48,7 +48,7 @@ class CircleAnimationWidgetState extends State<CircleAnimationWidget>
 
   @override
   void dispose() {
-    _controller.dispose();
+    controller.dispose();
     super.dispose();
   }
 
@@ -58,8 +58,8 @@ class CircleAnimationWidgetState extends State<CircleAnimationWidget>
       children: [
         CustomPaint(
           painter: CustomCirclePainterWidget(
-            circleAngle: _circleAnimation.value,
-            sinOffset: _sinAnimation.value,
+            circleAngle: circleAnimation.value,
+            sinOffset: sinAnimation.value,
           ),
           child: Container(),
         ),

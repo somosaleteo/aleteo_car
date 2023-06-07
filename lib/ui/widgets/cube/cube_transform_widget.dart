@@ -6,12 +6,13 @@ class CubeTransformWidget extends StatefulWidget {
   const CubeTransformWidget({super.key});
 
   @override
-  State<CubeTransformWidget> createState() => _CubeTransformWidgetState();
+  State<CubeTransformWidget> createState() => CubeTransformWidgetState();
 }
 
-class _CubeTransformWidgetState extends State<CubeTransformWidget>
+class CubeTransformWidgetState extends State<CubeTransformWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController cubeAnimationController;
+  late Animation<double> animation;
   Matrix4 transformationMatrix = Matrix4.identity();
   @override
   void initState() {
@@ -21,8 +22,7 @@ class _CubeTransformWidgetState extends State<CubeTransformWidget>
       duration: const Duration(seconds: 60),
     );
 
-    final Animation<double> animation =
-        Tween(begin: 0.0, end: 125.66).animate(cubeAnimationController);
+    animation = Tween(begin: 0.0, end: 125.66).animate(cubeAnimationController);
     animation.addListener(() {
       setState(() {
         transformationMatrix = Matrix4.identity()
