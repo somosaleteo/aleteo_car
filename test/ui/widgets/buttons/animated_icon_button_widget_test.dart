@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  // Inicializando el entorno de prueba para el widget
+  // Initializing the test environment for the widget
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('AnimatedIconButtonWidget', () {
-    testWidgets('debería ser creado', (WidgetTester tester) async {
+    testWidgets('it should be created', (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: AnimatedIconButtonWidget(),
@@ -16,8 +16,7 @@ void main() {
       expect(find.byType(AnimatedIconButtonWidget), findsOneWidget);
     });
 
-    testWidgets('debería contener un MaterialButton',
-        (WidgetTester tester) async {
+    testWidgets('it should have a MaterialButton', (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: AnimatedIconButtonWidget(),
@@ -26,7 +25,7 @@ void main() {
       expect(find.byType(MaterialButton), findsOneWidget);
     });
 
-    testWidgets('debería contener un AnimatedContainer',
+    testWidgets('it should have a AnimatedContainer',
         (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
@@ -36,8 +35,7 @@ void main() {
       expect(find.byType(AnimatedContainer), findsOneWidget);
     });
 
-    testWidgets('debería contener un AnimatedIcon',
-        (WidgetTester tester) async {
+    testWidgets('it should have a AnimatedIcon', (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
           home: AnimatedIconButtonWidget(),
@@ -46,7 +44,7 @@ void main() {
       expect(find.byType(AnimatedIcon), findsOneWidget);
     });
 
-    testWidgets('debería ejecutar la función onPressed cuando se presiona',
+    testWidgets('it should execute onPressed callback when pressed',
         (WidgetTester tester) async {
       await tester.pumpWidget(
         const MaterialApp(
@@ -55,8 +53,8 @@ void main() {
       );
       await tester.tap(find.byType(MaterialButton));
       await tester.pump();
-      // Esta prueba verifica si la función onPressed se llama cuando se presiona MaterialButton.
-      // Se puede ampliar en función del comportamiento real de la función onPressed.
+      // This test checks whether onPressed is called when MaterialButton is pressed.
+      // It can be extended based on the actual behavior of the onPressed function.
     });
   });
 }

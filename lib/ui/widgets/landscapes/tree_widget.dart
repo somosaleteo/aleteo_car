@@ -7,20 +7,20 @@ class TreeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return const SizedBox(
       height: 300,
       width: 200,
       child: ClipRRect(
         child: CustomPaint(
-          painter: _TreePainter(),
+          painter: TreePainter(),
         ),
       ),
     );
   }
 }
 
-class _TreePainter extends CustomPainter {
-  _TreePainter();
+class TreePainter extends CustomPainter {
+  const TreePainter();
 
   @override
   void paint(Canvas canvas, Size size) {

@@ -14,12 +14,12 @@ class BuildingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       size: Size(width, height),
-      painter: _BuildingPainter(),
+      painter: BuildingPainter(),
     );
   }
 }
 
-class _BuildingPainter extends CustomPainter {
+class BuildingPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
