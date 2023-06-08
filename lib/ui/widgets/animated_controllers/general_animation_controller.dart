@@ -9,9 +9,12 @@ class GeneralAnimationController {
 
   final StreamController<bool> _playControllerStream =
       StreamController.broadcast();
+
   final StreamController<Map<String, double>>
       _controllerPositionValuesReported = StreamController.broadcast();
+
   Stream<bool> get isPlayingStream => _playControllerStream.stream;
+
   Stream<Map<String, double>> get controllerPositionValuesReportedStream =>
       _controllerPositionValuesReported.stream;
 
@@ -35,6 +38,11 @@ class GeneralAnimationController {
 
   void togglePlayPause() {
     setIsPlaying(!_isPlaying);
+  }
+
+  void dispose() {
+    generalAnimationController._playControllerStream.close();
+    generalAnimationController._controllerPositionValuesReported.close();
   }
 }
 
