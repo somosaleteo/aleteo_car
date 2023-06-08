@@ -4,7 +4,7 @@ import 'package:aleteo_car/ui/widgets/cars/front_bumper_widget.dart';
 import 'package:aleteo_car/ui/widgets/positioned_vehicle_part_widget.dart';
 import 'package:aleteo_car/ui/widgets/vehicle_part_widget.dart';
 
-import 'package:aleteo_car/ui/widgets/vehicle_parts/car_front_bumpers/car_front_bumber_a_widget.dart';
+import 'package:aleteo_car/ui/widgets/vehicle_parts/car_front_bumpers/car_front_bumper_a_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
