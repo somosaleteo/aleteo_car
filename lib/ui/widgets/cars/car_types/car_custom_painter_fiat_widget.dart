@@ -25,10 +25,10 @@ import '../trunk_widget.dart';
 
 class CarCustomPainterFiatWidget extends StatelessWidget {
   const CarCustomPainterFiatWidget({
-    Key? key,
+    super.key,
     required this.size,
     this.showLayoutColors = false,
-  }) : super(key: key);
+  });
   final Size size;
   final bool showLayoutColors;
 
