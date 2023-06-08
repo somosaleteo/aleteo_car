@@ -10,14 +10,14 @@ class CarWheelWorkshopCustomPainter extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _CarWheelWorkshopPainter(
+      painter: CarWheelWorkshopPainter(
           color: color ?? const Color.fromRGBO(0, 0, 0, 1.0)),
     );
   }
 }
 
-class _CarWheelWorkshopPainter extends CustomPainter {
-  _CarWheelWorkshopPainter({required this.color});
+class CarWheelWorkshopPainter extends CustomPainter {
+  const CarWheelWorkshopPainter({required this.color});
   final Color color;
 
   @override
@@ -33,5 +33,5 @@ class _CarWheelWorkshopPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

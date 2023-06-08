@@ -12,14 +12,14 @@ class CarBonnetWorkshopCustomPainterWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _CarBonnetWorkshopPainter(
+      painter: CarBonnetWorkshopPainter(
           color: color ?? const Color.fromRGBO(3, 221, 208, 1.0)),
     );
   }
 }
 
-class _CarBonnetWorkshopPainter extends CustomPainter {
-  _CarBonnetWorkshopPainter({required this.color});
+class CarBonnetWorkshopPainter extends CustomPainter {
+  const CarBonnetWorkshopPainter({required this.color});
 
   final Color color;
 
@@ -35,5 +35,5 @@ class _CarBonnetWorkshopPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_CarBonnetWorkshopPainter oldDelegate) => true;
+  bool shouldRepaint(CarBonnetWorkshopPainter oldDelegate) => false;
 }
