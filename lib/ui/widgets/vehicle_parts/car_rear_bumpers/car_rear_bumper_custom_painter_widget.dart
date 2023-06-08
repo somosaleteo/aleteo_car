@@ -16,7 +16,7 @@ class CarRearBumperCustomPainterWidget extends StatelessWidget {
 }
 
 class CarRearBumperPainter extends CustomPainter {
-  CarRearBumperPainter({required this.color});
+  const CarRearBumperPainter({required this.color});
   final Color color;
   @override
   void paint(Canvas canvas, Size size) {
@@ -30,5 +30,5 @@ class CarRearBumperPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

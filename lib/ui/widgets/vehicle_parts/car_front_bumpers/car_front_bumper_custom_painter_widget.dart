@@ -12,15 +12,15 @@ class CarFrontBumperCustomPainterWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _CarFrontBumperPainter(
+      painter: CarFrontBumperPainter(
         color: color ?? const Color.fromRGBO(125, 125, 125, 1.0),
       ),
     );
   }
 }
 
-class _CarFrontBumperPainter extends CustomPainter {
-  _CarFrontBumperPainter({required this.color});
+class CarFrontBumperPainter extends CustomPainter {
+  const CarFrontBumperPainter({required this.color});
 
   final Color color;
 
@@ -38,5 +38,5 @@ class _CarFrontBumperPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_CarFrontBumperPainter oldDelegate) => true;
+  bool shouldRepaint(CarFrontBumperPainter oldDelegate) => false;
 }

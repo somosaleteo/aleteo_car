@@ -17,7 +17,7 @@ class CarWheelCustomPainter extends StatelessWidget
 }
 
 class CarWheelPainter extends CustomPainter {
-  CarWheelPainter({required this.color});
+  const CarWheelPainter({required this.color});
   final Color color;
 
   @override
@@ -33,5 +33,5 @@ class CarWheelPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

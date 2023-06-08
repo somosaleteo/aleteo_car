@@ -10,14 +10,14 @@ class CarDoorsCustomPainterWidget extends StatelessWidget with EntityTrunk {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _CarDoorsPainter(
+      painter: CarDoorsPainter(
           color: color ?? const Color.fromRGBO(3, 221, 208, 1.0)),
     );
   }
 }
 
-class _CarDoorsPainter extends CustomPainter {
-  _CarDoorsPainter({required this.color});
+class CarDoorsPainter extends CustomPainter {
+  const CarDoorsPainter({required this.color});
 
   final Color color;
 
@@ -30,5 +30,5 @@ class _CarDoorsPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_CarDoorsPainter oldDelegate) => true;
+  bool shouldRepaint(CarDoorsPainter oldDelegate) => false;
 }
