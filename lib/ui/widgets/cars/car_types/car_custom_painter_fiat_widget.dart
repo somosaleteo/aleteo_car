@@ -6,7 +6,7 @@ import '../../vehicle_part_widget.dart';
 import '../../vehicle_parts/car_bonnets/car_bonnet_custom_painter_widget.dart';
 import '../../vehicle_parts/car_cockpits/car_cockpit_custom_painter_widget.dart';
 import '../../vehicle_parts/car_doors/car_door_custom_painter_widget.dart';
-import '../../vehicle_parts/car_front_bumpers/car_front_bumber_custom_painter_widget.dart';
+import '../../vehicle_parts/car_front_bumpers/car_front_bumper_custom_painter_widget.dart';
 import '../../vehicle_parts/car_front_lights/car_front_light_custom_painter_widget.dart';
 import '../../vehicle_parts/car_rear_bumpers/car_rear_bumper_custom_painter_widget.dart';
 import '../../vehicle_parts/car_rear_lights/car_rear_light_custom_painter_widget.dart';

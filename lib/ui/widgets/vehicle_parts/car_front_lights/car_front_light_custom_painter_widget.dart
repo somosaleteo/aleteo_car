@@ -12,15 +12,15 @@ class CarFrontLightCustomPainterWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _CarFrontLightPainter(
+      painter: CarFrontLightPainter(
         color: color ?? const Color.fromRGBO(225, 0, 0, 1.0),
       ),
     );
   }
 }
 
-class _CarFrontLightPainter extends CustomPainter {
-  _CarFrontLightPainter({required this.color});
+class CarFrontLightPainter extends CustomPainter {
+  const CarFrontLightPainter({required this.color});
 
   final Color color;
 
@@ -39,5 +39,5 @@ class _CarFrontLightPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_CarFrontLightPainter oldDelegate) => true;
+  bool shouldRepaint(CarFrontLightPainter oldDelegate) => false;
 }

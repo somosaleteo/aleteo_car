@@ -12,14 +12,14 @@ class CarDoorsWorkshopCustomPainterWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _CarDoorsWorkshopPainter(
+      painter: CarDoorsWorkshopPainter(
           color: color ?? const Color.fromARGB(255, 225, 155, 111)),
     );
   }
 }
 
-class _CarDoorsWorkshopPainter extends CustomPainter {
-  _CarDoorsWorkshopPainter({required this.color});
+class CarDoorsWorkshopPainter extends CustomPainter {
+  const CarDoorsWorkshopPainter({required this.color});
 
   final Color color;
 
@@ -32,5 +32,5 @@ class _CarDoorsWorkshopPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_CarDoorsWorkshopPainter oldDelegate) => true;
+  bool shouldRepaint(CarDoorsWorkshopPainter oldDelegate) => false;
 }

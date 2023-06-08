@@ -8,15 +8,15 @@ class CarRearBumperWorkshopCustomPainterWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _CarRearBumperWorkshopPainter(
+      painter: CarRearBumperWorkshopPainter(
         color: color ?? const Color.fromRGBO(125, 125, 125, 1.0),
       ),
     );
   }
 }
 
-class _CarRearBumperWorkshopPainter extends CustomPainter {
-  _CarRearBumperWorkshopPainter({required this.color});
+class CarRearBumperWorkshopPainter extends CustomPainter {
+  const CarRearBumperWorkshopPainter({required this.color});
   final Color color;
   @override
   void paint(Canvas canvas, Size size) {
@@ -30,5 +30,5 @@ class _CarRearBumperWorkshopPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

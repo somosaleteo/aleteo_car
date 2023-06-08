@@ -15,7 +15,7 @@ class CarRearLightCustomPainterWidget extends StatelessWidget {
 }
 
 class CarRearLightPainter extends CustomPainter {
-  CarRearLightPainter({required this.color});
+  const CarRearLightPainter({required this.color});
 
   final Color color;
   @override
@@ -30,5 +30,5 @@ class CarRearLightPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

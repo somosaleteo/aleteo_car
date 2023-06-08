@@ -18,7 +18,7 @@ class CarTrunkCustomPainterWidget extends StatelessWidget with EntityTrunk {
 }
 
 class CarTrunkPainter extends CustomPainter {
-  CarTrunkPainter({required this.color});
+  const CarTrunkPainter({required this.color});
 
   final Color color;
 
@@ -41,5 +41,5 @@ class CarTrunkPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

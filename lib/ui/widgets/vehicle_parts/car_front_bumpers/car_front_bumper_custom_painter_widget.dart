@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../../entities.dart';
 
-class CarFrontBumperWorkshopCustomPainterWidget extends StatelessWidget
+class CarFrontBumperCustomPainterWidget extends StatelessWidget
     with EntityFrontBumper {
-  const CarFrontBumperWorkshopCustomPainterWidget({Key? key, this.color})
+  const CarFrontBumperCustomPainterWidget({Key? key, this.color})
       : super(key: key);
 
   final Color? color;
@@ -12,15 +12,15 @@ class CarFrontBumperWorkshopCustomPainterWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _CarFrontWorkshopBumperPainter(
+      painter: CarFrontBumperPainter(
         color: color ?? const Color.fromRGBO(125, 125, 125, 1.0),
       ),
     );
   }
 }
 
-class _CarFrontWorkshopBumperPainter extends CustomPainter {
-  _CarFrontWorkshopBumperPainter({required this.color});
+class CarFrontBumperPainter extends CustomPainter {
+  const CarFrontBumperPainter({required this.color});
 
   final Color color;
 
@@ -38,5 +38,5 @@ class _CarFrontWorkshopBumperPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_CarFrontWorkshopBumperPainter oldDelegate) => true;
+  bool shouldRepaint(CarFrontBumperPainter oldDelegate) => false;
 }

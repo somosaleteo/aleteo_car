@@ -10,15 +10,15 @@ class CarTrunkWorkshopCustomPainterWidget extends StatelessWidget with EntityTru
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _CarTrunkWorkshopPainter(
+      painter: CarTrunkWorkshopPainter(
         color: color ?? const Color.fromRGBO(3, 221, 208, 1.0),
       ),
     );
   }
 }
 
-class _CarTrunkWorkshopPainter extends CustomPainter {
-  _CarTrunkWorkshopPainter({required this.color});
+class CarTrunkWorkshopPainter extends CustomPainter {
+  const CarTrunkWorkshopPainter({required this.color});
 
   final Color color;
 
@@ -41,5 +41,5 @@ class _CarTrunkWorkshopPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

@@ -11,14 +11,14 @@ class CarCockpitCustomPainterWidget extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: _CarCockpickPainter(
+      painter: CarCockpickPainter(
           color: color ?? const Color.fromRGBO(3, 221, 208, 1.0)),
     );
   }
 }
 
-class _CarCockpickPainter extends CustomPainter {
-  _CarCockpickPainter({required this.color});
+class CarCockpickPainter extends CustomPainter {
+  const CarCockpickPainter({required this.color});
 
   final Color color;
 
@@ -38,5 +38,5 @@ class _CarCockpickPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(_CarCockpickPainter oldDelegate) => true;
+  bool shouldRepaint(CarCockpickPainter oldDelegate) => false;
 }
