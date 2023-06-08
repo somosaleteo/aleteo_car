@@ -18,7 +18,7 @@ import 'my_car_container_page.dart';
 import 'my_car_custom_painter_page.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +39,7 @@ class MyHomePage extends StatelessWidget {
                 const _SeparatorWidget(),
                 const _SeparatorWidget(),
                 MyNavigatorButtonWidget(
+                  key: const Key('NavigatorButtonBoxModel'),
                   page: const BoxModelPage(),
                   size: size,
                   label: "Box Model",
@@ -50,6 +51,7 @@ class MyHomePage extends StatelessWidget {
                 ),
                 const _SeparatorWidget(),
                 MyNavigatorButtonWidget(
+                  key: const Key('NavigatorButtonCarMainContainer'),
                   page: const MyCarContainerPage(),
                   size: size,
                   label: "Sin usar custom painter",
@@ -60,6 +62,7 @@ class MyHomePage extends StatelessWidget {
                 ),
                 const _SeparatorWidget(),
                 MyNavigatorButtonWidget(
+                  key: const Key('NavigatorButtonLayout'),
                   page: const MyCarLayoutPage(),
                   size: size,
                   label: "Layout",
@@ -70,6 +73,7 @@ class MyHomePage extends StatelessWidget {
                 ),
                 const _SeparatorWidget(),
                 MyNavigatorButtonWidget(
+                  key: const Key('NavigatorButtonBasicGeometrics'),
                   size: size,
                   label: "Figuras Geométricas básicas",
                   page: const BasicGeometricShapesPage(),
@@ -80,6 +84,7 @@ class MyHomePage extends StatelessWidget {
                 ),
                 const _SeparatorWidget(),
                 MyNavigatorButtonWidget(
+                  key: const Key('NavigatorButtonCarCustomPaint'),
                   page: const MyCarCustomPainterPage(),
                   size: size,
                   label: "Usando Custom Painter",
@@ -89,6 +94,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
                 MyNavigatorButtonWidget(
+                  key: const Key('NavigatorButtonCarWorkshopCustomPaint'),
                   page: const MyCarWorkshopCustomPainterPage(),
                   size: size,
                   label: "¡Pintemos!",
@@ -98,6 +104,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
                 MyNavigatorButtonWidget(
+                  key: const Key('NavigatorButtonSinAnimation'),
                   page: const SinAnimationPage(),
                   size: size,
                   label: "¡Animemos un circulo!",
@@ -106,6 +113,7 @@ class MyHomePage extends StatelessWidget {
                 ),
                 const _SeparatorWidget(),
                 MyNavigatorButtonWidget(
+                  key: const Key('NavigatorButtonLandscapeAnimation'),
                   page: const LandScapeAnimationPage(),
                   size: size,
                   label: "Paisaje Animado",
@@ -113,6 +121,7 @@ class MyHomePage extends StatelessWidget {
                 ),
                 const _SeparatorWidget(),
                 MyNavigatorButtonWidget(
+                  key: const Key('NavigatorButtonCube'),
                   page: const AnimatedCubePage(),
                   size: size,
                   label: "Cubito",
@@ -120,6 +129,7 @@ class MyHomePage extends StatelessWidget {
                 ),
                 const _SeparatorWidget(),
                 MyNavigatorButtonWidget(
+                  key: const Key('NavigatorButtonAnimatedBall'),
                   page: const AnimatedBallPage(),
                   size: size,
                   label: "Pelota animada",

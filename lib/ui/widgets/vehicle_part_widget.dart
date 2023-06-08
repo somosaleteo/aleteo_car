@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 
 class VehiclePartWidget extends StatelessWidget {
   const VehiclePartWidget(
-      {Key? key,
+      {super.key,
       required this.size,
       required this.child,
       this.color = Colors.transparent,
-      this.showLayout = false})
-      : super(key: key);
+      this.showLayout = false});
 
   final Size size;
   final Widget child;

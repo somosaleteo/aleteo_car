@@ -9,7 +9,8 @@ void main() {
     // arrange
     await tester
         .pumpWidget(const MaterialApp(home: Material(child: MyHomePage())));
-    final container = tester.element(find.byType(Container));
+
+    final container = tester.element(find.byType(Container).first);
     final BuildContext context = container;
 
     final Size containerSize =
