@@ -76,4 +76,13 @@ void main() {
 
     expect(find.byType(CloudsWidget), findsWidgets);
   });
+
+  testWidgets('Test SunEffectPainter shouldRepaint returns false',
+      (widgetTester) async {
+    final newSun =
+        SunEffectPainter(screenWidth: 100, sunRayColor: Colors.yellow);
+    final oldSun = SunEffectPainter(screenWidth: 70, sunRayColor: Colors.grey);
+
+    expect(newSun.shouldRepaint(oldSun), false);
+  });
 }
