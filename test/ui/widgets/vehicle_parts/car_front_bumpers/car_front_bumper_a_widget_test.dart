@@ -24,8 +24,8 @@ void main() {
       (WidgetTester tester) async {
     const testColor = Colors.red;
 
-    await tester
-        .pumpWidget(MaterialApp(home: CarFrontBumperAWidget(color: testColor)));
+    await tester.pumpWidget(
+        const MaterialApp(home: CarFrontBumperAWidget(color: testColor)));
 
     final container = tester.widget<Container>(find.byType(Container));
     final decoration = container.decoration as BoxDecoration;
